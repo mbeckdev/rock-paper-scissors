@@ -6,6 +6,71 @@
   </head>
   <body>
     <h1>Rock Paper Scissors</h1>
-    <script></script>
+    <script>
+      function computerPlay() {
+        //return randomly  'Rock', 'Paper', or 'Scissors'.
+      }
+      function playOneRound(playerSelection, computerSelection) {
+        //inputs - case insenstitve - user should be able to type in  ROCK, rock, rOcK and it'll work
+        let playerSelectionLowerCase = playerSelection.toLowerCase();
+        //returns a string that declares the winner of the round like: 'You Lose! Paper beats Rock'
+        if (playerSelectionLowerCase == "rock") {
+        } else if (playerSelectionLowerCase == "paper") {
+        } else if (playerSelectionLowerCase == "scissors") {
+        } else {
+          return "You didn't enter something correctly";
+        }
+      }
+
+      //test
+      const playerSelection = "rock";
+      const computerSelection = computerPlay();
+      console.log(playOneRound(playerSelection, computerSelection));
+
+      function checkUserInput(playerInput) {
+        //returns the result of the prompt
+
+        // check that the input is one of three words, else make them type it in again
+
+        switch (playerInput) {
+          case "rock":
+          case "paper":
+          case "scissors":
+            //it's ok, do nothing and return the same thing that was input
+            return playerInput;
+          default:
+            //else prompt for new input
+            let newInput = prompt(
+              'Write "rock", "paper", or "scissors"',
+              "rock"
+            );
+            //set input to lowercase version
+            newInput = newInput.toLowerCase();
+            //check the input and return the value -- recursion here
+            return checkUserInput(newInput);
+        }
+      }
+
+      function game() {
+        //ask for player input
+        let playerInput = prompt(
+          'Write "rock", "paper", or "scissors"',
+          "rock"
+        );
+        //translate input text to lowercase
+        playerInput = playerInput.toLowerCase();
+        //check input to make sure it's one of 3 words. - else prompt to fix it
+        playerInput = checkUserInput(playerInput);
+
+        playOneRound(playerInput, "rock");
+        //check who won
+        //if player won, increment player win counter
+        //else if computer won, increment computer win counter.
+        playOneRound("rock", "rock");
+        playOneRound("rock", "rock");
+        playOneRound("rock", "rock");
+        playOneRound("rock", "rock");
+      }
+    </script>
   </body>
 </html>
