@@ -10,13 +10,70 @@
       function computerPlay() {
         //return randomly  'Rock', 'Paper', or 'Scissors'.
       }
+
+      function showWinner(stringToShow) {
+        console.log(stringToShow);
+      }
+
       function playOneRound(playerSelection, computerSelection) {
         //inputs - case insenstitve - user should be able to type in  ROCK, rock, rOcK and it'll work
-        let playerSelectionLowerCase = playerSelection.toLowerCase();
+        // already lowercase from another function
+        let stringToShow = "";
         //returns a string that declares the winner of the round like: 'You Lose! Paper beats Rock'
-        if (playerSelectionLowerCase == "rock") {
-        } else if (playerSelectionLowerCase == "paper") {
-        } else if (playerSelectionLowerCase == "scissors") {
+        if (playerSelection == "rock") {
+          switch (computerSelection) {
+            case "rock":
+              stringToShow = "You tied! Rock vs Rock";
+              showWinner(stringToShow);
+              return "tie";
+            case "paper":
+              stringToShow = "You lose! Paper beats Rock";
+              showWinner(stringToShow);
+              return "computer";
+            case "scissors":
+              stringToShow = "You win! Rock beats Scissors";
+              showWinner(stringToShow);
+              return "player";
+            default:
+              //the computer selection isn't one of the three words - error
+              console.log("Computer selection is not one of the three words!");
+          }
+        } else if (playerSelection == "paper") {
+          switch (computerSelection) {
+            case "paper":
+              stringToShow = "You tied! Paper vs Paper";
+              showWinner(stringToShow);
+              return "tie";
+            case "scissors":
+              stringToShow = "You lose! Scissors beats Paper";
+              showWinner(stringToShow);
+              return "computer";
+            case "rock":
+              stringToShow = "You win! Paper beats Rock";
+              showWinner(stringToShow);
+              return "player";
+            default:
+              //the computer selection isn't one of the three words - error
+              console.log("Computer selection is not one of the three words!");
+          }
+        } else if (playerSelection == "scissors") {
+          switch (computerSelection) {
+            case "scissors":
+              stringToShow = "You tied! Scissors vs Scissors";
+              showWinner(stringToShow);
+              return "tie";
+            case "rock":
+              stringToShow = "You lose! Rock beats Scissors";
+              showWinner(stringToShow);
+              return "computer";
+            case "paper":
+              stringToShow = "You win! Scissors beats Paper";
+              showWinner(stringToShow);
+              return "player";
+            default:
+              //the computer selection isn't one of the three words - error
+              console.log("Computer selection is not one of the three words!");
+          }
         } else {
           return "You didn't enter something correctly";
         }
@@ -60,12 +117,26 @@
         //translate input text to lowercase
         playerInput = playerInput.toLowerCase();
         //check input to make sure it's one of 3 words. - else prompt to fix it
-        playerInput = checkUserInput(playerInput);
+        playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
 
-        playOneRound(playerInput, "rock");
+        // get computer random choice
+
+        //play a round - output text saying who won, return a string of who won, 'player' or 'computer'
+        let winner = "";
+        let playerScore = 0;
+        let computerScore = 0;
+        winner = playOneRound(playerInput, "paper");
         //check who won
         //if player won, increment player win counter
         //else if computer won, increment computer win counter.
+        if (winner == "player") {
+          playerScore++;
+        } else if (winner == "computer") {
+          computerScore++;
+        }
+        //write scores to somewhere visible
+        console.log(`player:${playerScore}  computer:${computerScore}`);
+
         playOneRound("rock", "rock");
         playOneRound("rock", "rock");
         playOneRound("rock", "rock");
