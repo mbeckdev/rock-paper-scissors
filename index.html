@@ -108,18 +108,36 @@
         }
       }
 
+      function getComputerChoice() {
+        let compChoice = "";
+        let rndInt = 0; //will hold 0,1,or2 later
+        rndInt = Math.floor(Math.random() * 3); //gives 0,1,or2
+        switch (rndInt) {
+          case 0:
+            return "rock";
+          case 1:
+            return "paper";
+          case 2:
+            return "scissors";
+          default:
+            return "computer choice is a bad integer";
+        }
+      }
+
       function game() {
         //ask for player input
-        let playerInput = prompt(
-          'Write "rock", "paper", or "scissors"',
-          "rock"
-        );
-        //translate input text to lowercase
-        playerInput = playerInput.toLowerCase();
-        //check input to make sure it's one of 3 words. - else prompt to fix it
-        playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
+        let playerInput;
+        // let playerInput = prompt(
+        //   'Write "rock", "paper", or "scissors"',
+        //   "rock"
+        // );
+        // //translate input text to lowercase
+        // playerInput = playerInput.toLowerCase();
+        // //check input to make sure it's one of 3 words. - else prompt to fix it
+        // playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
 
         // get computer random choice
+        let computerChoice = "";
 
         //play a round - output text saying who won, return a string of who won, 'player' or 'computer'
         let winner = "";
@@ -135,8 +153,11 @@
           playerInput = playerInput.toLowerCase();
           //check input to make sure it's one of 3 words. - else prompt to fix it
           playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
+          computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
 
-          winner = playOneRound(playerInput, "paper");
+          console.log(`Player: ${playerInput}   Computer:${computerChoice}`);
+
+          winner = playOneRound(playerInput, computerChoice);
           //check who won
           //if player won, increment player win counter
           //else if computer won, increment computer win counter.
