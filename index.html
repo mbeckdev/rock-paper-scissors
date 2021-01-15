@@ -125,22 +125,29 @@
         let winner = "";
         let playerScore = 0;
         let computerScore = 0;
-        winner = playOneRound(playerInput, "paper");
-        //check who won
-        //if player won, increment player win counter
-        //else if computer won, increment computer win counter.
-        if (winner == "player") {
-          playerScore++;
-        } else if (winner == "computer") {
-          computerScore++;
-        }
-        //write scores to somewhere visible
-        console.log(`player:${playerScore}  computer:${computerScore}`);
 
-        playOneRound("rock", "rock");
-        playOneRound("rock", "rock");
-        playOneRound("rock", "rock");
-        playOneRound("rock", "rock");
+        for (let i = 0; i < 5; i++) {
+          //play 5 rounds
+
+          //get new user input
+          playerInput = prompt('Write "rock", "paper", or "scissors"', "rock");
+          //translate input text to lowercase
+          playerInput = playerInput.toLowerCase();
+          //check input to make sure it's one of 3 words. - else prompt to fix it
+          playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
+
+          winner = playOneRound(playerInput, "paper");
+          //check who won
+          //if player won, increment player win counter
+          //else if computer won, increment computer win counter.
+          if (winner == "player") {
+            playerScore++;
+          } else if (winner == "computer") {
+            computerScore++;
+          }
+          //write scores to somewhere visible
+          console.log(`player:${playerScore}  computer:${computerScore}`);
+        }
       }
     </script>
   </body>
