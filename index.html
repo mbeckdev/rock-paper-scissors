@@ -169,6 +169,18 @@
           //write scores to somewhere visible
           console.log(`player:${playerScore}  computer:${computerScore}`);
         }
+
+        //check who won all rounds
+        let gameWinnerMessage = "";
+        if (playerScore == computerScore) {
+          gameWinnerMessage = "You tied the game!";
+        } else if (playerScore > computerScore) {
+          gameWinnerMessage = "You win the game!";
+        } else {
+          gameWinnerMessage = "You lost the game!";
+        }
+        //write who won all rounds to screen
+        console.log(gameWinnerMessage);
       }
       game();
     </script>
