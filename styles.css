@@ -8,7 +8,6 @@ body,
 #page,
 h1,
 #make-choice,
-#three-choices,
 #score-and-label,
 #shake-area,
 #results-container p,
@@ -47,8 +46,17 @@ h1 {
   font-size: 30px;
 }
 #three-choices {
+  display: flex;
+  /* justify-content: center; */
   justify-content: space-around;
-  /* border: 1px solid green; */
+  border: 1px solid green;
+  width: 800px;
+}
+#choice-container {
+  /* flex-direction: column;
+  display: flex;
+  justify-content: center; */
+  margin: 0 auto;
 }
 #score-and-label {
   display: flex;
