@@ -78,3 +78,12 @@ h1 {
 }
 #results-container p {
 }
+
+.ticket {
+}
+
+#ticket-number-you {
+  position: relative;
+  left: -75px;
+  color: black;
+}
