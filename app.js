@@ -190,6 +190,8 @@ function game() {
 let btns = document.querySelectorAll(`.choice-button`);
 btns.forEach((btn) => {
   btn.addEventListener('click', acceptChoice);
+  btn.addEventListener('mousedown', setMouseDownStyles);
+  btn.addEventListener('mouseup', setMouseUpStyles);
 });
 
 function acceptChoice(e) {
@@ -199,12 +201,58 @@ function acceptChoice(e) {
   // );
   let choice = e.target;
   console.log(e.target);
-  choice.style.boxShadow = '1px 1px 20px red';
+  // choice.style.boxShadow = '1px 1px 20px red';
   console.log(choice);
   // console.log(e);
 }
 
+function setMouseDownStyles(e) {
+  let choice = e.target;
+  // choice.style.transform = 'scale(2.0)';
+  if (choice.classList.contains('choice-mouse-up')) {
+    choice.classList.remove('choice-mouse-up');
+  }
+  choice.classList.add('choice-mouse-down');
+
+  choice.classList.remove('hover-bigger');
+
+  // choice.style.boxShadow = '1px 1px 20px red';
+}
+
+function setMouseUpStyles(e) {
+  // This runs when mouse button is let up. - just to make the click exciting
+  // add a class
+  let choice = e.target;
+  choice.classList.remove('choice-mouse-down');
+  choice.classList.add('choice-mouse-up');
+
+  // choice.classList.add('hover-bigger');
+
+  // choice.style.transform = 'scale(1.5)';
+}
+
+function addBackgroundGlow(e) {
+  let choice = e.target;
+}
+
+function resetChoiceSizes() {
+  btns.forEach((btn) => {
+    btn.classList.add('hover-bigger');
+    // btn.style.transform = 'scale(1)';
+    btn.classList.remove('choice-mouse-up');
+  });
+}
+// will add a new div behind the picture and box-shadow with a large bloom
+
+//add new div
+//position new div
+//add style of box-shadow  0 0 50px white
+//set z-index -1
+
+//then we can take out the focus border - i think that'll be obvious enough
+
 // game();
 // let testElement = document.querySelector('input');
-let testElement = document.querySelector(`.choice-button[data-choice='paper']`);
-testElement.style.boxShadow = '1px 1px 20px black';
+
+// let testElement = document.querySelector(`.choice-button[data-choice='paper']`);
+// testElement.style.boxShadow = '1px 1px 20px black';

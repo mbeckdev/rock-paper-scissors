@@ -87,3 +87,23 @@ h1 {
   left: -75px;
   color: black;
 }
+
+.choice-button {
+  /* transform: scale(1); */
+}
+
+.hover-bigger:hover {
+  transform: scale(1.5);
+}
+
+.choice-mouse-down {
+  /* I'm not using :focus because when .choice-mouse-up is added and deleted, it could
+  still be focused and I don't
+     want :focus to be a huge scale still*/
+  transform: scale(2);
+}
+
+.choice-mouse-up {
+  /* Add this when */
+  transform: scale(1.5);
+}
