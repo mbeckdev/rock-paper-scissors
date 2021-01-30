@@ -49,7 +49,7 @@ h1 {
   display: flex;
   /* justify-content: center; */
   justify-content: space-around;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 800px;
 }
 #choice-container {
@@ -90,6 +90,7 @@ h1 {
 
 .choice-button {
   /* transform: scale(1); */
+  outline: none;
 }
 
 .hover-bigger:hover {

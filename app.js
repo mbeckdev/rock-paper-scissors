@@ -192,6 +192,7 @@ btns.forEach((btn) => {
   btn.addEventListener('click', acceptChoice);
   btn.addEventListener('mousedown', setMouseDownStyles);
   btn.addEventListener('mouseup', setMouseUpStyles);
+  btn.addEventListener('mousedown', playSound);
 });
 
 function acceptChoice(e) {
@@ -200,9 +201,9 @@ function acceptChoice(e) {
   //   `.choice-button[data-choice='${e.target}']`
   // );
   let choice = e.target;
-  console.log(e.target);
+  // console.log(e.target);
   // choice.style.boxShadow = '1px 1px 20px red';
-  console.log(choice);
+  // console.log(choice);
   // console.log(e);
 }
 
@@ -241,6 +242,15 @@ function resetChoiceSizes() {
     // btn.style.transform = 'scale(1)';
     btn.classList.remove('choice-mouse-up');
   });
+}
+
+function playSound(e) {
+  const audio = document.querySelector(`audio#select`);
+  // const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if (!audio) return; // stop the function from running - like when you hit q
+  audio.currentTime = 0; // rewind to the start - so you can press it a bunch of times fast
+  audio.play();
+  // key.classList.add('playing');
 }
 // will add a new div behind the picture and box-shadow with a large bloom
 
