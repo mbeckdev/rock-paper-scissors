@@ -140,7 +140,7 @@ function game() {
     // get new user input
     // let lol = document.getElementById('player-choice-rock');
     // console.log(lol);
-    // debugger;
+
     playerInput = acceptChoice();
     // playerInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
     // translate input text to lowercase
@@ -187,6 +187,10 @@ function game() {
 //   .querySelector(`.choice-button`)
 //   .addEventListener('click', acceptChoice);
 
+//
+//
+//
+
 let btns = document.querySelectorAll(`.choice-button`);
 btns.forEach((btn) => {
   btn.addEventListener('click', acceptChoice);
@@ -194,21 +198,27 @@ btns.forEach((btn) => {
   btn.addEventListener('mouseup', setMouseUpStyles);
   btn.addEventListener('mousedown', playSound);
 });
+// let btnImgs = document.querySelectorAll(`.choice-image`);
+let fuzzBalls = document.querySelectorAll(`.fuzz-ball`);
+//
+//
+//
 
 function acceptChoice(e) {
   // let choice = document.querySelector(`.choice-button[data-choice='rock']`);
   // let choice = document.querySelector(
   //   `.choice-button[data-choice='${e.target}']`
   // );
-  let choice = e.target;
-  // console.log(e.target);
+  let choice = e.target.parentElement;
+  // console.log(e.target.parentElement);
   // choice.style.boxShadow = '1px 1px 20px red';
   // console.log(choice);
   // console.log(e);
+  addBackgroundGlow(e);
 }
 
 function setMouseDownStyles(e) {
-  let choice = e.target;
+  let choice = e.target.parentElement;
   // choice.style.transform = 'scale(2.0)';
   if (choice.classList.contains('choice-mouse-up')) {
     choice.classList.remove('choice-mouse-up');
@@ -223,9 +233,14 @@ function setMouseDownStyles(e) {
 function setMouseUpStyles(e) {
   // This runs when mouse button is let up. - just to make the click exciting
   // add a class
-  let choice = e.target;
+  let choice = e.target.parentElement;
   choice.classList.remove('choice-mouse-down');
   choice.classList.add('choice-mouse-up');
+  let background = choice.previousSibling.previousSibling;
+  console.log(choice);
+  console.log(background);
+  background.classList.remove('hidden');
+  console.log(background);
 
   // choice.classList.add('hover-bigger');
 
@@ -233,7 +248,15 @@ function setMouseUpStyles(e) {
 }
 
 function addBackgroundGlow(e) {
-  let choice = e.target;
+  let fuzzBall = e.target.parentElement.firstElementChild; //div thing
+  fuzzBall.classList.remove('hidden');
+
+  // let glowElement = document.createElement('div');
+  //glowElement.textContent = 'adsf';
+  // // let newContent = document.createTextNode('asdfasdfasdf');
+  // glowElement.style.position = 'relative';
+  // glowElement.style.zIndex = 4;
+  // choice.appendChild(glowElement);
 }
 
 function resetChoiceSizes() {
@@ -241,6 +264,13 @@ function resetChoiceSizes() {
     btn.classList.add('hover-bigger');
     // btn.style.transform = 'scale(1)';
     btn.classList.remove('choice-mouse-up');
+    console.log(btn);
+  });
+
+  fuzzBalls.forEach((fuzzBall) => {
+    if (!fuzzBall.classList.contains('hidden')) {
+      fuzzBall.classList.add('hidden');
+    }
   });
 }
 
@@ -252,6 +282,7 @@ function playSound(e) {
   audio.play();
   // key.classList.add('playing');
 }
+
 // will add a new div behind the picture and box-shadow with a large bloom
 
 //add new div

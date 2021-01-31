@@ -45,19 +45,7 @@ h1 {
   border: 1px solid orange;
   font-size: 30px;
 }
-#three-choices {
-  display: flex;
-  /* justify-content: center; */
-  justify-content: space-around;
-  /* border: 1px solid green; */
-  width: 800px;
-}
-#choice-container {
-  /* flex-direction: column;
-  display: flex;
-  justify-content: center; */
-  margin: 0 auto;
-}
+
 #score-and-label {
   display: flex;
   align-items: center;
@@ -88,23 +76,56 @@ h1 {
   color: black;
 }
 
-.choice-button {
-  /* transform: scale(1); */
-  outline: none;
-}
+/* CHOICE BUTTON */
 
-.hover-bigger:hover {
-  transform: scale(1.5);
+#three-choices {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid green;
+  width: 800px;
+  height: 206px;
 }
-
+#choice-container {
+  margin: 0 auto;
+  position: relative;
+}
 .choice-mouse-down {
   /* I'm not using :focus because when .choice-mouse-up is added and deleted, it could
   still be focused and I don't
      want :focus to be a huge scale still*/
   transform: scale(2);
 }
-
 .choice-mouse-up {
-  /* Add this when */
   transform: scale(1.5);
+}
+.choice-button {
+  outline: none;
+  position: relative;
+  border: 1px solid white;
+}
+img {
+  border: 1px dashed blue;
+}
+.hover-bigger:hover {
+  transform: scale(1.5);
+}
+
+.selected-background {
+  /* the div this is on MUST be above the <img> for */
+  position: absolute;
+  background: radial-gradient(rgba(200, 200, 0, 0.8), rgba(200, 0, 0, 0) 70%);
+  width: 250px;
+  height: 250px;
+  /* box-shadow: 0 0 20px green; */
+  z-index: -1;
+  top: -25px;
+  left: -25px;
+}
+
+.choice-image {
+  position: relative;
+}
+
+.hidden {
+  visibility: hidden;
 }
