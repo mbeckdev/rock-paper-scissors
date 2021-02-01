@@ -6,6 +6,7 @@ function computerPlay() {
 
 function showWinner(stringToShow) {
   console.log(stringToShow);
+  document.getElementById('what-beats-what').textContent = stringToShow;
 }
 
 function playOneRound(playerSelection, computerSelection) {
