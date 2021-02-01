@@ -75,7 +75,7 @@ function playOneRound(playerSelection, computerSelection) {
 //test
 const playerSelection = 'rock';
 const computerSelection = computerPlay();
-console.log(playOneRound(playerSelection, computerSelection));
+// console.log(playOneRound(playerSelection, computerSelection));
 
 function checkUserInput(playerInput) {
   //returns the result of the prompt
@@ -90,11 +90,14 @@ function checkUserInput(playerInput) {
       return playerInput;
     default:
       //else prompt for new input
-      let newInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
-      //set input to lowercase version
-      newInput = newInput.toLowerCase();
-      //check the input and return the value -- recursion here
-      return checkUserInput(newInput);
+      blnAcceptingInput = true;
+    // tell user something is wrong
+
+    // let newInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
+    // //set input to lowercase version
+    // newInput = newInput.toLowerCase();
+    // //check the input and return the value -- recursion here
+    // return checkUserInput(newInput);
   }
 }
 
@@ -114,9 +117,60 @@ function getComputerChoice() {
   }
 }
 
+let thePlayerInput = '';
+let blnAcceptingInput = 'false';
+
+intro(); // start of everything! after reload.
+function intro() {
+  //do intro animations. !
+  // when done...
+  blnAcceptingInput = true;
+}
+function nextRound() {
+  thePlayerInput = '';
+  blnAcceptingInput = true;
+}
+
+let computerChoice = '';
+let playerScore = 0;
+let computerScore = 0;
+function afterInputRecieved() {
+  // sets blnAcceptingInput = true;
+  if (blnAcceptingInput == false) {
+    // blnAcceptingInput is false because we clicked something
+    console.log(thePlayerInput);
+    // check playerinput
+    thePlayerInput = checkUserInput(thePlayerInput);
+
+    // create computer input
+
+    computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
+    console.log(computerChoice);
+    // check who wins
+    let winner = '';
+    winner = playOneRound(thePlayerInput, computerChoice);
+    // check who won
+    // if player won, increment player win counter
+    // else if computer won, increment computer win counter.
+    if (winner == 'player') {
+      playerScore++;
+    } else if (winner == 'computer') {
+      computerScore++;
+    }
+    //write scores to somewhere visible
+    console.log(`player:${playerScore}  computer:${computerScore}`);
+
+    // animate player and computer
+    // at the end of this animation,
+    //  and set bln to true for next round -- if <5 rounds played, else ending
+
+    // nextRound();
+  }
+}
+
 function game() {
   //ask for player input
-  let playerInput;
+  let playerInput = '';
   // let playerInput = prompt(
   //   'Write "rock", "paper", or "scissors"',
   //   "rock"
@@ -130,6 +184,7 @@ function game() {
   let computerChoice = '';
 
   //play a round - output text saying who won, return a string of who won, 'player' or 'computer'
+
   let winner = '';
   let playerScore = 0;
   let computerScore = 0;
@@ -141,7 +196,7 @@ function game() {
     // let lol = document.getElementById('player-choice-rock');
     // console.log(lol);
 
-    playerInput = acceptChoice();
+    playerInput = thePlayerInput; //acceptChoice();
     // playerInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
     // translate input text to lowercase
     playerInput = playerInput.toLowerCase();
@@ -210,11 +265,13 @@ function acceptChoice(e) {
   //   `.choice-button[data-choice='${e.target}']`
   // );
   let choice = e.target.parentElement;
-  // console.log(e.target.parentElement);
-  // choice.style.boxShadow = '1px 1px 20px red';
-  // console.log(choice);
-  // console.log(e);
+
   addBackgroundGlow(e);
+  console.log(e.target.parentElement);
+  thePlayerInput = e.target.parentElement.getAttribute('data-choice');
+  // return e.target.parentElement.getAttribute('data-choice');
+  blnAcceptingInput = false;
+  afterInputRecieved();
 }
 
 function setMouseDownStyles(e) {
