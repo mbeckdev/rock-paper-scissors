@@ -129,3 +129,9 @@ img {
 .hidden {
   visibility: hidden;
 }
+
+/* SHOWING SCORES */
+#player-score,
+#computer-score {
+  margin: 0 20px;
+}

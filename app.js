@@ -150,26 +150,34 @@ function afterInputRecieved() {
     // check who wins
     let winner = '';
     winner = playOneRound(thePlayerInput, computerChoice);
+
     // check who won
     // if player won, increment player win counter
     // else if computer won, increment computer win counter.
     if (winner == 'player') {
       playerScore++;
+      // write playerScore to the screen
+      document.getElementById('player-score').textContent = playerScore;
     } else if (winner == 'computer') {
       computerScore++;
+      document.getElementById('computer-score').textContent = computerScore;
+    } else {
+      // tie - do nothing
     }
+
     //write scores to somewhere visible
     console.log(`player:${playerScore}  computer:${computerScore}`);
 
     // animate player and computer
     // at the end of this animation,
     //  and set bln to true for next round -- if <5 rounds played, else ending
-
+    blnAcceptingInput = true;
     // nextRound();
   }
 }
 
 function game() {
+  // old now, can delete i think
   //ask for player input
   let playerInput = '';
   // let playerInput = prompt(
@@ -268,7 +276,7 @@ function acceptChoice(e) {
   let choice = e.target.parentElement;
 
   addBackgroundGlow(e);
-  console.log(e.target.parentElement);
+  // console.log(e.target.parentElement);
   thePlayerInput = e.target.parentElement.getAttribute('data-choice');
   // return e.target.parentElement.getAttribute('data-choice');
   blnAcceptingInput = false;
@@ -295,10 +303,10 @@ function setMouseUpStyles(e) {
   choice.classList.remove('choice-mouse-down');
   choice.classList.add('choice-mouse-up');
   let background = choice.previousSibling.previousSibling;
-  console.log(choice);
-  console.log(background);
+  // console.log(choice);
+  // console.log(background);
   background.classList.remove('hidden');
-  console.log(background);
+  // console.log(background);
 
   // choice.classList.add('hover-bigger');
 
