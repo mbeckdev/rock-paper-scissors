@@ -147,6 +147,9 @@ function afterInputRecieved() {
 
     computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
     console.log(computerChoice);
+
+    shakeAnimations();
+
     // check who wins
     let winner = '';
     winner = playOneRound(thePlayerInput, computerChoice);
@@ -191,70 +194,72 @@ function removeTransition(e) {
   this.classList.remove('score-glow');
 }
 
-function game() {
-  // old now, can delete i think
-  //ask for player input
-  let playerInput = '';
-  // let playerInput = prompt(
-  //   'Write "rock", "paper", or "scissors"',
-  //   "rock"
-  // );
-  // //translate input text to lowercase
-  // playerInput = playerInput.toLowerCase();
-  // //check input to make sure it's one of 3 words. - else prompt to fix it
-  // playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
+function shakeAnimations() {}
 
-  // get computer random choice
-  let computerChoice = '';
+// function game() {
+//   // old now, can delete i think
+//   //ask for player input
+//   let playerInput = '';
+//   // let playerInput = prompt(
+//   //   'Write "rock", "paper", or "scissors"',
+//   //   "rock"
+//   // );
+//   // //translate input text to lowercase
+//   // playerInput = playerInput.toLowerCase();
+//   // //check input to make sure it's one of 3 words. - else prompt to fix it
+//   // playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
 
-  //play a round - output text saying who won, return a string of who won, 'player' or 'computer'
+//   // get computer random choice
+//   let computerChoice = '';
 
-  let winner = '';
-  let playerScore = 0;
-  let computerScore = 0;
+//   //play a round - output text saying who won, return a string of who won, 'player' or 'computer'
 
-  for (let i = 0; i < 5; i++) {
-    // play 5 rounds
+//   let winner = '';
+//   let playerScore = 0;
+//   let computerScore = 0;
 
-    // get new user input
-    // let lol = document.getElementById('player-choice-rock');
-    // console.log(lol);
+//   for (let i = 0; i < 5; i++) {
+//     // play 5 rounds
 
-    playerInput = thePlayerInput; //acceptChoice();
-    // playerInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
-    // translate input text to lowercase
-    playerInput = playerInput.toLowerCase();
-    // check input to make sure it's one of 3 words. - else prompt to fix it
-    playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
-    computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
+//     // get new user input
+//     // let lol = document.getElementById('player-choice-rock');
+//     // console.log(lol);
 
-    console.log(`Player: ${playerInput}   Computer:${computerChoice}`);
+//     playerInput = thePlayerInput; //acceptChoice();
+//     // playerInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
+//     // translate input text to lowercase
+//     playerInput = playerInput.toLowerCase();
+//     // check input to make sure it's one of 3 words. - else prompt to fix it
+//     playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
+//     computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
 
-    winner = playOneRound(playerInput, computerChoice);
-    // check who won
-    // if player won, increment player win counter
-    // else if computer won, increment computer win counter.
-    if (winner == 'player') {
-      playerScore++;
-    } else if (winner == 'computer') {
-      computerScore++;
-    }
-    //write scores to somewhere visible
-    console.log(`player:${playerScore}  computer:${computerScore}`);
-  }
+//     console.log(`Player: ${playerInput}   Computer:${computerChoice}`);
 
-  //check who won all rounds
-  let gameWinnerMessage = '';
-  if (playerScore == computerScore) {
-    gameWinnerMessage = 'You tied the game!';
-  } else if (playerScore > computerScore) {
-    gameWinnerMessage = 'You win the game!';
-  } else {
-    gameWinnerMessage = 'You lost the game!';
-  }
-  //write who won all rounds to screen
-  console.log(gameWinnerMessage);
-}
+//     winner = playOneRound(playerInput, computerChoice);
+//     // check who won
+//     // if player won, increment player win counter
+//     // else if computer won, increment computer win counter.
+//     if (winner == 'player') {
+//       playerScore++;
+//     } else if (winner == 'computer') {
+//       computerScore++;
+//     }
+//     //write scores to somewhere visible
+//     console.log(`player:${playerScore}  computer:${computerScore}`);
+//   }
+
+//   //check who won all rounds
+//   let gameWinnerMessage = '';
+//   if (playerScore == computerScore) {
+//     gameWinnerMessage = 'You tied the game!';
+//   } else if (playerScore > computerScore) {
+//     gameWinnerMessage = 'You win the game!';
+//   } else {
+//     gameWinnerMessage = 'You lost the game!';
+//   }
+//   //write who won all rounds to screen
+//   console.log(gameWinnerMessage);
+// }
 
 // const choices = querySelectorAll('.choice-button');
 // choices.forEach((choice) => {
