@@ -119,6 +119,7 @@ function getComputerChoice() {
 }
 
 let thePlayerInput = '';
+
 let blnAcceptingInput = 'false';
 
 intro(); // start of everything! after reload.
@@ -132,7 +133,7 @@ function nextRound() {
   blnAcceptingInput = true;
 }
 
-let computerChoice = '';
+let theComputerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
 function afterInputRecieved() {
@@ -145,14 +146,14 @@ function afterInputRecieved() {
 
     // create computer input
 
-    computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
-    console.log(computerChoice);
+    theComputerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
+    console.log(theComputerChoice);
 
-    shakeAnimations();
+    shakeAnimations(thePlayerInput, theComputerChoice);
 
     // check who wins
     let winner = '';
-    winner = playOneRound(thePlayerInput, computerChoice);
+    winner = playOneRound(thePlayerInput, theComputerChoice);
 
     // check who won
     // if player won, increment player win counter
@@ -194,7 +195,51 @@ function removeTransition(e) {
   this.classList.remove('score-glow');
 }
 
-function shakeAnimations() {}
+function waitABit() {
+  document.getElementById('what-beats-what').style.color = 'blue';
+}
+
+let playerHand = document.getElementById('player-shaker');
+let computerHand = document.getElementById('computer-shaker');
+function shakeAnimations(playerChoice, theComputerChoice) {
+  //change to fists
+
+  playerHand.setAttribute('src', `media/left-rock.png`);
+  computerHand.setAttribute('src', `media/right-rock.png`);
+  //shake fists
+  // add class .fist-shaking (this will start the animation)
+
+  playerHand.classList.add('fist-shaking');
+  computerHand.classList.add('fist-shaking');
+
+  //wait for shaking to finish
+  //  we will wait to continue by adding an even listener to each that
+  //    fires when animation is over - will go to function afterShakeAnimation
+}
+
+playerHand.addEventListener('transitionend', afterShakeAnimation());
+computerHand.addEventListener('transitionend', afterShakeAnimation(), false);
+
+function afterShakeAnimation() {
+  //change to each choice
+
+  // playerHand.classList.remove('fist-shaking');
+  // computerHand.classList.remove('fist-shaking');
+
+  console.log('afterShakeAnimation happened!');
+
+  // if statement to get around when this is called on page load. Why that is happening I can't figure out.
+  if (!(thePlayerInput == '')) {
+    document
+      .getElementById('player-shaker')
+      .setAttribute('src', `media/left-${thePlayerInput}.png`);
+    document
+      .getElementById('computer-shaker')
+      .setAttribute('src', `media/right-${theComputerChoice}.png`);
+  }
+
+  // win-lose animation - like scissors cuts paper or paper covers rock etc.
+}
 
 // function game() {
 //   // old now, can delete i think
@@ -298,9 +343,18 @@ function acceptChoice(e) {
   // reset
   document.getElementById('player-score').classList.remove('score-glow');
   document.getElementById('computer-score').classList.remove('score-glow');
+  playerHand.classList.remove('fist-shaking');
+  computerHand.classList.remove('fist-shaking');
+  playerHand.removeEventListener('transitionend', afterShakeAnimation());
+  computerHand.removeEventListener('transitionend', afterShakeAnimation());
+  playerHand.addEventListener('transitionend', afterShakeAnimation());
+  computerHand.addEventListener('transitionend', afterShakeAnimation());
+
   // This resetting a random offsetWidth will allow the animation to happen more than once. Keep it!
   void document.getElementById('player-score').offsetWidth;
   void document.getElementById('computer-score').offsetWidth;
+  void playerHand.offsetWidth;
+  void computerHand.offsetWidth;
 
   let choice = e.target.parentElement;
 

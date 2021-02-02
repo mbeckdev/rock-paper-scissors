@@ -158,3 +158,41 @@ img {
     text-shadow: none;
   }
 }
+
+/* FIST SHAKING ANIMATION */
+.fist-shaking {
+  position: relative;
+  /* left: 0px; */
+  /* top: 0px; */
+  animation: fist-shake-animation 2s 1;
+  /* border: 1px dashed green; */
+  transition: left 4s;
+  left: 200px;
+}
+@keyframes fist-shake-animation {
+  0% {
+    top: 0;
+  }
+  20% {
+    top: -85px;
+  }
+  25% {
+    top: -10px;
+  }
+  45% {
+    top: -85px;
+  }
+  50% {
+    top: -10px;
+  }
+  70% {
+    top: -85px;
+  }
+
+  75% {
+    top: 1px;
+  }
+  100% {
+    top: 0;
+  }
+}
