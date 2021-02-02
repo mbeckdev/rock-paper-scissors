@@ -185,11 +185,6 @@ document
   .getElementById('computer-score')
   .addEventListener('transitionend', removeTransition);
 
-// let quickEle = document.getElementById('player-score');
-// quickEle.addEventListener('transitionstart', () => {
-//   console.log('durrrrrrrrrr');
-// });
-
 function removeTransition(e) {
   console.log(e);
   // if (e.propertyName !== 'score-glow') return; // skip it if it's not a transform
@@ -287,10 +282,6 @@ let fuzzBalls = document.querySelectorAll(`.fuzz-ball`);
 //
 //
 //
-// function roundReset() {
-//   // remove score glow class from all
-
-// }
 
 function acceptChoice(e) {
   // let choice = document.querySelector(`.choice-button[data-choice='rock']`);
