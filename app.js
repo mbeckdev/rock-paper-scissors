@@ -158,6 +158,10 @@ function afterInputRecieved() {
       playerScore++;
       // write playerScore to the screen
       document.getElementById('player-score').textContent = playerScore;
+      document.getElementById('player-score').classList.add('score-glow');
+      document
+        .getElementById('player-score')
+        .addEventListener('transitionend', removeTransition);
     } else if (winner == 'computer') {
       computerScore++;
       document.getElementById('computer-score').textContent = computerScore;
@@ -174,6 +178,12 @@ function afterInputRecieved() {
     blnAcceptingInput = true;
     // nextRound();
   }
+}
+
+function removeTransition(e) {
+  console.log(e);
+  // if (e.propertyName !== 'score-glow') return; // skip it if it's not a transform
+  this.classList.remove('score-glow');
 }
 
 function game() {

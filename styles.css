@@ -30,7 +30,7 @@ body {
 }
 #page {
   width: 1600px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* display: flex;
   justify-content: center; */
   flex-direction: column;
@@ -81,7 +81,7 @@ h1 {
 #three-choices {
   display: flex;
   justify-content: space-around;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 800px;
   height: 206px;
 }
@@ -101,10 +101,10 @@ h1 {
 .choice-button {
   outline: none;
   position: relative;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 img {
-  border: 1px dashed blue;
+  /* border: 1px dashed blue; */
 }
 .hover-bigger:hover {
   transform: scale(1.5);
@@ -134,4 +134,26 @@ img {
 #player-score,
 #computer-score {
   margin: 0 20px;
+}
+
+.score-glow {
+  /* transition-duration: 1s; */
+  /* animation-fill-mode: backwards; */
+  /* transition-timing-function: cubic-bezier(0.29, 1.01, 1, -0, 1); */
+  /* transition-timing-function: cubic-bezier(0, 0, 0.5, 1, 0, 0); */
+
+  /* background-color: red; */
+  transition-delay: 2s;
+  animation: in-and-out-animation 2s 1;
+}
+@keyframes in-and-out-animation {
+  0% {
+    background-color: none;
+  }
+  75% {
+    background-color: red;
+  }
+  100% {
+    background-color: none;
+  }
 }
