@@ -143,17 +143,18 @@ img {
   /* transition-timing-function: cubic-bezier(0, 0, 0.5, 1, 0, 0); */
 
   /* background-color: red; */
-  transition-delay: 2s;
+
+  /* transition-delay: 2s; */
   animation: in-and-out-animation 2s 1;
 }
 @keyframes in-and-out-animation {
   0% {
-    background-color: none;
+    text-shadow: none;
   }
   75% {
-    background-color: red;
+    text-shadow: 0 0 20px yellow;
   }
   100% {
-    background-color: none;
+    text-shadow: none;
   }
 }

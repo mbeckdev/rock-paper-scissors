@@ -159,12 +159,10 @@ function afterInputRecieved() {
       // write playerScore to the screen
       document.getElementById('player-score').textContent = playerScore;
       document.getElementById('player-score').classList.add('score-glow');
-      document
-        .getElementById('player-score')
-        .addEventListener('transitionend', removeTransition);
     } else if (winner == 'computer') {
       computerScore++;
       document.getElementById('computer-score').textContent = computerScore;
+      document.getElementById('computer-score').classList.add('score-glow');
     } else {
       // tie - do nothing
     }
@@ -179,6 +177,18 @@ function afterInputRecieved() {
     // nextRound();
   }
 }
+
+document
+  .getElementById('player-score')
+  .addEventListener('transitionend', removeTransition);
+document
+  .getElementById('computer-score')
+  .addEventListener('transitionend', removeTransition);
+
+// let quickEle = document.getElementById('player-score');
+// quickEle.addEventListener('transitionstart', () => {
+//   console.log('durrrrrrrrrr');
+// });
 
 function removeTransition(e) {
   console.log(e);
@@ -277,12 +287,25 @@ let fuzzBalls = document.querySelectorAll(`.fuzz-ball`);
 //
 //
 //
+// function roundReset() {
+//   // remove score glow class from all
+
+// }
 
 function acceptChoice(e) {
   // let choice = document.querySelector(`.choice-button[data-choice='rock']`);
   // let choice = document.querySelector(
   //   `.choice-button[data-choice='${e.target}']`
   // );
+  // roundReset();
+
+  // reset
+  document.getElementById('player-score').classList.remove('score-glow');
+  document.getElementById('computer-score').classList.remove('score-glow');
+  // This resetting a random offsetWidth will allow the animation to happen more than once. Keep it!
+  void document.getElementById('player-score').offsetWidth;
+  void document.getElementById('computer-score').offsetWidth;
+
   let choice = e.target.parentElement;
 
   addBackgroundGlow(e);
