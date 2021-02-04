@@ -175,11 +175,38 @@ function afterAnimations() {
   //write scores to somewhere visible
   console.log(`player:${playerScore}  computer:${computerScore}`);
 
-  // animate player and computer
-  // at the end of this animation,
   //  and set bln to true for next round -- if <5 rounds played, else ending
   blnAcceptingInput = true;
+  checkForEndOfGame();
+
+  // animate player and computer
+  // at the end of this animation,
+
   // nextRound();
+}
+
+const endGameMessageEl = document.getElementById('end-game-message');
+function checkForEndOfGame() {
+  if (playerScore >= 5) {
+    endGameMessageEl.textContent =
+      'You beat Bruce Bogrotor! You get his ticket!';
+    blnAcceptingInput = false;
+    removeButtonEventListeners();
+  } else if (computerScore >= 5) {
+    endGameMessageEl.textContent =
+      "You lost to Bruce Bogrotor! You're going to be here forever";
+    blnAcceptingInput = false;
+    removeButtonEventListeners();
+  }
+}
+
+function removeButtonEventListeners() {
+  btns.forEach((btn) => {
+    btn.removeEventListener('click', acceptChoice);
+    btn.removeEventListener('mousedown', setMouseDownStyles);
+    btn.removeEventListener('mouseup', setMouseUpStyles);
+    btn.removeEventListener('mousedown', playSound);
+  });
 }
 // CHANGES ON SCORE DIGITS
 document
@@ -219,20 +246,30 @@ function shakeAnimations(playerChoice, theComputerChoice) {
   //    fires when animation is over - will go to function afterShakeAnimation
 }
 
-playerHand.addEventListener('animationend', afterShakeAnimation); //dont use () like afterShakeAnimation() because it calls that on page load!
-let lol2 = computerHand.addEventListener('animationend', afterShakeAnimation);
+playerHand.addEventListener('animationend', afterShakeAnimationPlayer); //dont use () like afterShakeAnimation() because it calls that on page load!
+let lol2 = computerHand.addEventListener(
+  'animationend',
+  afterShakeAnimationComputer
+);
 
-function afterShakeAnimation() {
-  //change to each choice
-  console.log('afterShakeAnimation happened!');
-
+function afterShakeAnimationPlayer() {
   changeHandPics();
-
-  // win-lose animation - like scissors cuts paper or paper covers rock etc.
-
-  //score and stuff after
+}
+function afterShakeAnimationComputer() {
+  // changeHandPics();
   afterAnimations();
 }
+
+// function afterShakeAnimation() {
+//   //change to each choice
+//   // console.log('afterShakeAnimation happened!');
+//   changeHandPics();
+
+//   // win-lose animation - like scissors cuts paper or paper covers rock etc.
+
+//   //score and stuff after
+//   afterAnimations();
+// }
 function changeHandPics() {
   document
     .getElementById('player-shaker')
@@ -362,12 +399,15 @@ function acceptChoice(e) {
 
   let choice = e.target.parentElement;
 
-  addBackgroundGlow(e);
-  // console.log(e.target.parentElement);
-  thePlayerInput = e.target.parentElement.getAttribute('data-choice');
-  // return e.target.parentElement.getAttribute('data-choice');
-  blnAcceptingInput = false;
-  afterInputRecieved();
+  // don't continue if this boolean is false - means someone got to score 5
+  if (blnAcceptingInput == true) {
+    addBackgroundGlow(e);
+    // console.log(e.target.parentElement);
+    thePlayerInput = e.target.parentElement.getAttribute('data-choice');
+    // return e.target.parentElement.getAttribute('data-choice');
+    blnAcceptingInput = false;
+    afterInputRecieved();
+  }
 }
 
 function setMouseDownStyles(e) {
