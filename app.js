@@ -172,6 +172,9 @@ function afterAnimations() {
     // tie - do nothing
   }
 
+  //take off selection glow
+  resetChoiceSizes();
+
   //write scores to somewhere visible
   console.log(`player:${playerScore}  computer:${computerScore}`);
 
@@ -189,25 +192,45 @@ const endGameMessageEl = document.getElementById('end-game-message');
 function checkForEndOfGame() {
   if (playerScore >= 5) {
     endGameMessageEl.textContent =
-      'You beat Bruce Bogrotor! You get his ticket!';
-    blnAcceptingInput = false;
-    removeButtonEventListeners();
-    enablePlayAgainButton();
+      'You beat Bruce Bogtrotor! You get his ticket!';
+    getReadyForNewGame();
   } else if (computerScore >= 5) {
     endGameMessageEl.textContent =
-      "You lost to Bruce Bogrotor! You're going to be here forever";
-    blnAcceptingInput = false;
-    removeButtonEventListeners();
-    enablePlayAgainButton();
+      "You lost to Bruce Bogrotor! You're going to be here all day!";
+    getReadyForNewGame();
   }
 }
 
+function getReadyForNewGame() {
+  blnAcceptingInput = false;
+  removeButtonEventListeners();
+  removeButtonHover();
+  enablePlayAgainButton();
+}
+function setShakerPicsToFists() {
+  playerHand.setAttribute('src', `media/left-rock.png`);
+  computerHand.setAttribute('src', `media/right-rock.png`);
+}
 function removeButtonEventListeners() {
   btns.forEach((btn) => {
     btn.removeEventListener('click', acceptChoice);
     btn.removeEventListener('mousedown', setMouseDownStyles);
     btn.removeEventListener('mouseup', setMouseUpStyles);
     btn.removeEventListener('mousedown', playSound);
+  });
+}
+
+function removeButtonHover() {
+  btns.forEach((btn) => {
+    btn.classList.remove('hover-bigger');
+  });
+}
+function addButtonEventListeners() {
+  btns.forEach((btn) => {
+    btn.addEventListener('click', acceptChoice);
+    btn.addEventListener('mousedown', setMouseDownStyles);
+    btn.addEventListener('mouseup', setMouseUpStyles);
+    btn.addEventListener('mousedown', playSound);
   });
 }
 
@@ -223,8 +246,16 @@ function playAgain() {
 
   resetScores();
   resetTexts();
+  resetChoiceSelections();
+  blnAcceptingInput = true;
+  setShakerPicsToFists();
+  addButtonEventListeners();
+  //hereherehere add hoverbigger to all
 }
 
+function resetChoiceSelections() {
+  resetChoiceSizes();
+}
 function resetScores() {
   playerScore = 0;
   computerScore = 0;
@@ -236,6 +267,7 @@ function resetTexts() {
   document.getElementById('what-beats-what').textContent = '';
   document.getElementById('end-game-message').textContent = '';
 }
+
 // CHANGES ON SCORE DIGITS
 document
   .getElementById('player-score')
@@ -410,7 +442,6 @@ function acceptChoice(e) {
   document.getElementById('player-score').classList.remove('score-glow');
   document.getElementById('computer-score').classList.remove('score-glow');
 
-  // here here here
   playerHand.classList.remove('fist-shaking');
   computerHand.classList.remove('fist-shaking');
 
@@ -425,12 +456,12 @@ function acceptChoice(e) {
   void playerHand.offsetWidth;
   void computerHand.offsetWidth;
 
-  let choice = e.target.parentElement;
+  // let choice = e.target.parentElement;
 
   // don't continue if this boolean is false - means someone got to score 5
   if (blnAcceptingInput == true) {
     addBackgroundGlow(e);
-    // console.log(e.target.parentElement);
+
     thePlayerInput = e.target.parentElement.getAttribute('data-choice');
     // return e.target.parentElement.getAttribute('data-choice');
     blnAcceptingInput = false;
@@ -471,13 +502,6 @@ function setMouseUpStyles(e) {
 function addBackgroundGlow(e) {
   let fuzzBall = e.target.parentElement.firstElementChild; //div thing
   fuzzBall.classList.remove('hidden');
-
-  // let glowElement = document.createElement('div');
-  //glowElement.textContent = 'adsf';
-  // // let newContent = document.createTextNode('asdfasdfasdf');
-  // glowElement.style.position = 'relative';
-  // glowElement.style.zIndex = 4;
-  // choice.appendChild(glowElement);
 }
 
 function resetChoiceSizes() {
