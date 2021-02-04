@@ -119,7 +119,6 @@ function getComputerChoice() {
 }
 
 let thePlayerInput = '';
-
 let blnAcceptingInput = 'false';
 
 intro(); // start of everything! after reload.
@@ -182,6 +181,7 @@ function afterInputRecieved() {
   }
 }
 
+// CHANGES ON SCORE DIGITS
 document
   .getElementById('player-score')
   .addEventListener('transitionend', removeTransition);
@@ -195,10 +195,12 @@ function removeTransition(e) {
   this.classList.remove('score-glow');
 }
 
+// WHAT BEATS WHAT
 function waitABit() {
   document.getElementById('what-beats-what').style.color = 'blue';
 }
 
+// CHANGES AND ANIMATIONS ON PLAYER-SHAKER AND COMPUTER-SHAKER
 let playerHand = document.getElementById('player-shaker');
 let computerHand = document.getElementById('computer-shaker');
 function shakeAnimations(playerChoice, theComputerChoice) {
@@ -217,8 +219,8 @@ function shakeAnimations(playerChoice, theComputerChoice) {
   //    fires when animation is over - will go to function afterShakeAnimation
 }
 
-playerHand.addEventListener('transitionend', afterShakeAnimation());
-computerHand.addEventListener('transitionend', afterShakeAnimation(), false);
+playerHand.addEventListener('animationend', afterShakeAnimation); //dont use () like afterShakeAnimation() because it calls that on page load!
+let lol2 = computerHand.addEventListener('animationend', afterShakeAnimation);
 
 function afterShakeAnimation() {
   //change to each choice
@@ -228,15 +230,15 @@ function afterShakeAnimation() {
 
   console.log('afterShakeAnimation happened!');
 
-  // if statement to get around when this is called on page load. Why that is happening I can't figure out.
-  if (!(thePlayerInput == '')) {
-    document
-      .getElementById('player-shaker')
-      .setAttribute('src', `media/left-${thePlayerInput}.png`);
-    document
-      .getElementById('computer-shaker')
-      .setAttribute('src', `media/right-${theComputerChoice}.png`);
-  }
+  // // if statement to get around when this is called on page load. Why that is happening I can't figure out.
+  // if (!(thePlayerInput == '')) {
+  document
+    .getElementById('player-shaker')
+    .setAttribute('src', `media/left-${thePlayerInput}.png`);
+  document
+    .getElementById('computer-shaker')
+    .setAttribute('src', `media/right-${theComputerChoice}.png`);
+  // }
 
   // win-lose animation - like scissors cuts paper or paper covers rock etc.
 }
@@ -343,12 +345,15 @@ function acceptChoice(e) {
   // reset
   document.getElementById('player-score').classList.remove('score-glow');
   document.getElementById('computer-score').classList.remove('score-glow');
+
+  // here here here
   playerHand.classList.remove('fist-shaking');
   computerHand.classList.remove('fist-shaking');
-  playerHand.removeEventListener('transitionend', afterShakeAnimation());
-  computerHand.removeEventListener('transitionend', afterShakeAnimation());
-  playerHand.addEventListener('transitionend', afterShakeAnimation());
-  computerHand.addEventListener('transitionend', afterShakeAnimation());
+
+  // playerHand.removeEventListener('transitionend', afterShakeAnimation());
+  // computerHand.removeEventListener('transitionend', afterShakeAnimation());
+  // playerHand.addEventListener('transitionend', afterShakeAnimation());
+  // computerHand.addEventListener('transitionend', afterShakeAnimation());
 
   // This resetting a random offsetWidth will allow the animation to happen more than once. Keep it!
   void document.getElementById('player-score').offsetWidth;

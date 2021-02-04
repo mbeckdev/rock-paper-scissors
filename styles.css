@@ -160,37 +160,45 @@ img {
 }
 
 /* FIST SHAKING ANIMATION */
-.fist-shaking {
+#player-shaker,
+#computer-shaker {
   position: relative;
+  animation-duration: 1.25s;
+  animation-iteration-count: 1;
+}
+
+.fist-shaking {
+  animation-name: fist-shake-animation;
+  /* we'll add and remove this class to make animation play multiple times */
+
+  /* COMMENTED OUT SO THAT IT WONT PLAY ON PAGE LOAD if we were to add it.*/
+
+  /* animation: fist-shake-animation 2s 1; -- KEEP THIS COMMENTED OUT */
   /* left: 0px; */
   /* top: 0px; */
-  animation: fist-shake-animation 2s 1;
+
   /* border: 1px dashed green; */
-  transition: left 4s;
-  left: 200px;
+  /* transition: left 4s; */
+  /* left: 200px; */
 }
 @keyframes fist-shake-animation {
   0% {
     top: 0;
   }
-  20% {
+  26% {
     top: -85px;
   }
-  25% {
+  34% {
     top: -10px;
   }
-  45% {
+  59% {
     top: -85px;
   }
-  50% {
+  67% {
     top: -10px;
   }
-  70% {
+  92% {
     top: -85px;
-  }
-
-  75% {
-    top: 1px;
   }
   100% {
     top: 0;
