@@ -208,6 +208,7 @@ function removeButtonEventListeners() {
     btn.removeEventListener('mousedown', playSound);
   });
 }
+function enablePlayAgainButton() {}
 // CHANGES ON SCORE DIGITS
 document
   .getElementById('player-score')

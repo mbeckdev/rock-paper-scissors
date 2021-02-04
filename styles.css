@@ -125,6 +125,12 @@ img {
 .choice-image {
   position: relative;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-default {
+  cursor: default;
+}
 
 .hidden {
   visibility: hidden;
@@ -203,4 +209,18 @@ img {
   100% {
     top: 0;
   }
+}
+
+/* play again button */
+#play-again {
+  background-color: darkslategray;
+  border-style: outset;
+  padding: 10px 20px;
+}
+#play-again-container {
+  display: flex;
+  justify-content: center;
+}
+#play-again:hover {
+  cursor: pointer;
 }
