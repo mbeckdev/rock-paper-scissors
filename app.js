@@ -220,8 +220,22 @@ function enablePlayAgainButton() {
 function playAgain() {
   document.getElementById('play-again').removeEventListener('click', playAgain);
   document.getElementById('play-again').style.visibility = 'hidden'; //the opposite is visible
+
+  resetScores();
+  resetTexts();
 }
 
+function resetScores() {
+  playerScore = 0;
+  computerScore = 0;
+  document.getElementById('player-score').textContent = playerScore;
+  document.getElementById('computer-score').textContent = computerScore;
+}
+
+function resetTexts() {
+  document.getElementById('what-beats-what').textContent = '';
+  document.getElementById('end-game-message').textContent = '';
+}
 // CHANGES ON SCORE DIGITS
 document
   .getElementById('player-score')

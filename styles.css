@@ -220,7 +220,15 @@ img {
 #play-again-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 #play-again:hover {
   cursor: pointer;
+}
+
+/* results text */
+#what-beats-what,
+#end-game-message {
+  height: 3rem; /* will help keep page height the same when we get rid of text in these */
+  /* border: 1px solid orange; */
 }
