@@ -149,38 +149,38 @@ function afterInputRecieved() {
     console.log(theComputerChoice);
 
     shakeAnimations(thePlayerInput, theComputerChoice);
-
-    // check who wins
-    let winner = '';
-    winner = playOneRound(thePlayerInput, theComputerChoice);
-
-    // check who won
-    // if player won, increment player win counter
-    // else if computer won, increment computer win counter.
-    if (winner == 'player') {
-      playerScore++;
-      // write playerScore to the screen
-      document.getElementById('player-score').textContent = playerScore;
-      document.getElementById('player-score').classList.add('score-glow');
-    } else if (winner == 'computer') {
-      computerScore++;
-      document.getElementById('computer-score').textContent = computerScore;
-      document.getElementById('computer-score').classList.add('score-glow');
-    } else {
-      // tie - do nothing
-    }
-
-    //write scores to somewhere visible
-    console.log(`player:${playerScore}  computer:${computerScore}`);
-
-    // animate player and computer
-    // at the end of this animation,
-    //  and set bln to true for next round -- if <5 rounds played, else ending
-    blnAcceptingInput = true;
-    // nextRound();
   }
 }
+function afterAnimations() {
+  // check who wins
+  let winner = '';
+  winner = playOneRound(thePlayerInput, theComputerChoice);
 
+  // check who won
+  // if player won, increment player win counter
+  // else if computer won, increment computer win counter.
+  if (winner == 'player') {
+    playerScore++;
+    // write playerScore to the screen
+    document.getElementById('player-score').textContent = playerScore;
+    document.getElementById('player-score').classList.add('score-glow');
+  } else if (winner == 'computer') {
+    computerScore++;
+    document.getElementById('computer-score').textContent = computerScore;
+    document.getElementById('computer-score').classList.add('score-glow');
+  } else {
+    // tie - do nothing
+  }
+
+  //write scores to somewhere visible
+  console.log(`player:${playerScore}  computer:${computerScore}`);
+
+  // animate player and computer
+  // at the end of this animation,
+  //  and set bln to true for next round -- if <5 rounds played, else ending
+  blnAcceptingInput = true;
+  // nextRound();
+}
 // CHANGES ON SCORE DIGITS
 document
   .getElementById('player-score')
@@ -224,23 +224,22 @@ let lol2 = computerHand.addEventListener('animationend', afterShakeAnimation);
 
 function afterShakeAnimation() {
   //change to each choice
-
-  // playerHand.classList.remove('fist-shaking');
-  // computerHand.classList.remove('fist-shaking');
-
   console.log('afterShakeAnimation happened!');
 
-  // // if statement to get around when this is called on page load. Why that is happening I can't figure out.
-  // if (!(thePlayerInput == '')) {
+  changeHandPics();
+
+  // win-lose animation - like scissors cuts paper or paper covers rock etc.
+
+  //score and stuff after
+  afterAnimations();
+}
+function changeHandPics() {
   document
     .getElementById('player-shaker')
     .setAttribute('src', `media/left-${thePlayerInput}.png`);
   document
     .getElementById('computer-shaker')
     .setAttribute('src', `media/right-${theComputerChoice}.png`);
-  // }
-
-  // win-lose animation - like scissors cuts paper or paper covers rock etc.
 }
 
 // function game() {
