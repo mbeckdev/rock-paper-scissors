@@ -192,11 +192,13 @@ function checkForEndOfGame() {
       'You beat Bruce Bogrotor! You get his ticket!';
     blnAcceptingInput = false;
     removeButtonEventListeners();
+    enablePlayAgainButton();
   } else if (computerScore >= 5) {
     endGameMessageEl.textContent =
       "You lost to Bruce Bogrotor! You're going to be here forever";
     blnAcceptingInput = false;
     removeButtonEventListeners();
+    enablePlayAgainButton();
   }
 }
 
@@ -208,7 +210,18 @@ function removeButtonEventListeners() {
     btn.removeEventListener('mousedown', playSound);
   });
 }
-function enablePlayAgainButton() {}
+
+document.getElementById('play-again').style.visibility = 'hidden'; //the opposite is visible
+
+function enablePlayAgainButton() {
+  document.getElementById('play-again').style.visibility = 'visible';
+  document.getElementById('play-again').addEventListener('click', playAgain);
+}
+function playAgain() {
+  document.getElementById('play-again').removeEventListener('click', playAgain);
+  document.getElementById('play-again').style.visibility = 'hidden'; //the opposite is visible
+}
+
 // CHANGES ON SCORE DIGITS
 document
   .getElementById('player-score')
