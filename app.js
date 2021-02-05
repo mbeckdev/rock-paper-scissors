@@ -124,9 +124,66 @@ let blnAcceptingInput = 'false';
 intro(); // start of everything! after reload.
 function intro() {
   //do intro animations. !
+  introTextAnimations();
+  // // when done...
+  // blnAcceptingInput = true;
+  // //show everything else
+}
+const intro1 = document.getElementById('intro1');
+intro1.addEventListener('animationend', afterTextAnimation1);
+const intro2 = document.getElementById('intro2');
+intro2.addEventListener('animationend', afterTextAnimation2);
+const intro3 = document.getElementById('intro3');
+intro3.addEventListener('animationend', afterTextAnimation3);
+const nowServing = document.getElementById('now-serving');
+nowServing.addEventListener('animationend', afterNowServing);
+const makeYourChoice = document.getElementById('make-choice');
+makeYourChoice.addEventListener('animationend', afterMakeYourChoice);
+// const ChoiceContainer = document.getElementById('choice-container');
+// makeYourChoice.addEventListener('animationend', afterMakeYourChoice);
+
+function introTextAnimations() {}
+function afterTextAnimation1() {
+  intro1.classList.add('hidden-display');
+  intro1.classList.remove('container-fade-in-and-out');
+  intro2.classList.remove('hidden-display');
+  intro2.classList.add('container-fade-in-and-out');
+}
+function afterTextAnimation2() {
+  intro2.classList.add('hidden-display');
+  intro2.classList.remove('container-fade-in-and-out');
+  intro3.classList.remove('hidden-display');
+  intro3.classList.add('container-fade-in');
+}
+function afterTextAnimation3() {
+  // intro3.classList.add('hidden-display');
+  intro3.classList.remove('container-fade-in-and-out');
+  nowServing.classList.remove('hidden');
+  nowServing.classList.add('container-fade-in');
+}
+function afterNowServing() {
+  // intro3.classList.add('hidden-display');
+  nowServing.classList.remove('container-fade-in');
+
+  document.getElementById('choice-container').classList.remove('hidden');
+  makeYourChoice.classList.remove('hidden');
+  makeYourChoice.classList.add('drop-in');
+}
+function afterMakeYourChoice() {
+  document.getElementById('three-choices').classList.remove('hidden');
+  document.getElementById('score-and-label').classList.remove('hidden');
+  document.getElementById('shake-area').classList.remove('hidden');
+  // document.getElementById('choice-container').remove('hidden');
+  // document.getElementById('choice-container').remove('hidden');
+  // document.getElementById('choice-container').remove('hidden');
+  // document.getElementById('choice-container').remove('hidden');
+  // document.getElementById('choice-container').remove('hidden');
+
   // when done...
   blnAcceptingInput = true;
+  //show everything else
 }
+
 function nextRound() {
   thePlayerInput = '';
   blnAcceptingInput = true;

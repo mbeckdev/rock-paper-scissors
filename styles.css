@@ -138,6 +138,83 @@ img {
   visibility: hidden;
 }
 
+/* INTRO TEXT STUFF */
+.hidden-display {
+  display: none; /* don't leave blank vertical space by using visibility: hidden */
+}
+.intro-text {
+  text-align: center;
+  height: 3rem;
+}
+.container-fade-in {
+  animation-name: fade-in;
+  animation-duration: 1500ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.container-fade-out {
+  animation-name: fade-out;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.container-fade-in-and-out {
+  animation-name: fade-in-and-out;
+  animation-duration: 4000ms;
+  /* animation-timing-function: ease-out; */
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.drop-in {
+  animation-name: drop-in;
+  animation-duration: 500ms;
+  /* animation-timing-function: ease-out; */
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in-and-out {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    top: -100px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
 /* SHOWING SCORES */
 #player-score,
 #computer-score {
@@ -226,6 +303,10 @@ img {
 }
 #play-again:hover {
   cursor: pointer;
+  transform: scale(1.2);
+}
+#play-again:active {
+  border-style: inset;
 }
 
 /* results text */

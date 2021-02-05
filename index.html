@@ -13,15 +13,24 @@
   <body>
     <div id="page">
       <h1>ROCK PAPER SCISSORS AT THE DMV</h1>
-      <p id="intro">
+      <p id="intro1" class="intro-text container-fade-in-and-out">
+        YOU GET TO THE DEPARTMENT OF MOTOR VEHICLES AND TAKE A NUMBER.
+      </p>
+      <p id="intro2" class="intro-text hidden-display">
         YOU'LL HAVE TO WAIT HOURS UNLESS YOU CHALLENGE SOMEONE FOR THEIR NUMBER
-        IN AN...
+        IN ...
+      </p>
+      <p id="intro3" class="intro-text hidden-display">
+        AN EPIC GAME OF ROCK PAPER SCISSORS. FIRST TO 5!
       </p>
 
-      <div id="now-serving">NOW SERVING <span id="dmv-number">27</span></div>
-      <div id="choice-container">
-        <p id="make-choice">MAKE YOUR CHOICE</p>
-        <div id="three-choices">
+      <div id="now-serving" class="hidden">
+        NOW SERVING <span id="dmv-number">27</span>
+      </div>
+
+      <div id="choice-container" class="hidden">
+        <p id="make-choice" class="hidden">MAKE YOUR CHOICE</p>
+        <div id="three-choices" class="hidden">
           <div data-choice="rock" class="choice-button hover-bigger">
             <div class="selected-background hidden fuzz-ball"></div>
             <img
@@ -45,7 +54,7 @@
           </div>
         </div>
       </div>
-      <span id="score-and-label">
+      <span id="score-and-label" class="hidden">
         <img class="ticket" src="media/ticket.png" />
         <span id="ticket-number-you">97</span>
         You <span id="player-score">0</span>
@@ -54,7 +63,7 @@
         <span id="ticket-number-you">42</span>
       </span>
 
-      <div id="shake-area">
+      <div id="shake-area" class="hidden">
         <img id="player-shaker" src="media/left-rock.png" />
         <img id="computer-shaker" src="media/right-rock.png" />
       </div>
