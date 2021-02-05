@@ -145,7 +145,7 @@ makeYourChoice.addEventListener('animationend', afterMakeYourChoice);
 function introTextAnimations() {}
 function afterTextAnimation1() {
   intro1.classList.add('hidden-display');
-  intro1.classList.remove('container-fade-in-and-out');
+  intro1.classList.remove('container-fade-in-and-out-initial');
   intro2.classList.remove('hidden-display');
   intro2.classList.add('container-fade-in-and-out');
 }

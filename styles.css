@@ -167,6 +167,13 @@ img {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
+.container-fade-in-and-out-initial {
+  animation-name: fade-in-and-out-initial;
+  animation-duration: 4000ms;
+  /* animation-timing-function: ease-out; */
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
 .drop-in {
   animation-name: drop-in;
   animation-duration: 500ms;
@@ -196,6 +203,20 @@ img {
     opacity: 0;
   }
   20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-in-and-out-initial {
+  0% {
+    opacity: 0;
+  }
+  60% {
     opacity: 1;
   }
   80% {
