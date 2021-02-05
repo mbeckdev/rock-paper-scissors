@@ -206,6 +206,10 @@ function getReadyForNewGame() {
   removeButtonEventListeners();
   removeButtonHover();
   enablePlayAgainButton();
+  btnImgs.forEach((btnImg) => {
+    btnImg.classList.remove('cursor-pointer');
+    btnImg.classList.add('cursor-default');
+  });
 }
 function setShakerPicsToFists() {
   playerHand.setAttribute('src', `media/left-rock.png`);
@@ -425,7 +429,7 @@ btns.forEach((btn) => {
   btn.addEventListener('mouseup', setMouseUpStyles);
   btn.addEventListener('mousedown', playSound);
 });
-// let btnImgs = document.querySelectorAll(`.choice-image`);
+let btnImgs = document.querySelectorAll(`.choice-image`);
 let fuzzBalls = document.querySelectorAll(`.fuzz-ball`);
 //
 //
@@ -438,28 +442,28 @@ function acceptChoice(e) {
   // );
   // roundReset();
 
-  // reset
-  document.getElementById('player-score').classList.remove('score-glow');
-  document.getElementById('computer-score').classList.remove('score-glow');
-
-  playerHand.classList.remove('fist-shaking');
-  computerHand.classList.remove('fist-shaking');
-
-  // playerHand.removeEventListener('transitionend', afterShakeAnimation());
-  // computerHand.removeEventListener('transitionend', afterShakeAnimation());
-  // playerHand.addEventListener('transitionend', afterShakeAnimation());
-  // computerHand.addEventListener('transitionend', afterShakeAnimation());
-
-  // This resetting a random offsetWidth will allow the animation to happen more than once. Keep it!
-  void document.getElementById('player-score').offsetWidth;
-  void document.getElementById('computer-score').offsetWidth;
-  void playerHand.offsetWidth;
-  void computerHand.offsetWidth;
-
-  // let choice = e.target.parentElement;
-
   // don't continue if this boolean is false - means someone got to score 5
   if (blnAcceptingInput == true) {
+    // reset
+    document.getElementById('player-score').classList.remove('score-glow');
+    document.getElementById('computer-score').classList.remove('score-glow');
+
+    playerHand.classList.remove('fist-shaking');
+    computerHand.classList.remove('fist-shaking');
+
+    // playerHand.removeEventListener('transitionend', afterShakeAnimation());
+    // computerHand.removeEventListener('transitionend', afterShakeAnimation());
+    // playerHand.addEventListener('transitionend', afterShakeAnimation());
+    // computerHand.addEventListener('transitionend', afterShakeAnimation());
+
+    // This resetting a random offsetWidth will allow the animation to happen more than once. Keep it!
+    void document.getElementById('player-score').offsetWidth;
+    void document.getElementById('computer-score').offsetWidth;
+    void playerHand.offsetWidth;
+    void computerHand.offsetWidth;
+
+    // let choice = e.target.parentElement;
+
     addBackgroundGlow(e);
 
     thePlayerInput = e.target.parentElement.getAttribute('data-choice');
@@ -467,6 +471,7 @@ function acceptChoice(e) {
     blnAcceptingInput = false;
     afterInputRecieved();
   }
+  blnAcceptingInput = false;
 }
 
 function setMouseDownStyles(e) {
