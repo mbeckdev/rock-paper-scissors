@@ -42,7 +42,7 @@ h1 {
   font-size: 60px;
 }
 #intro {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   font-size: 30px;
 }
 
@@ -50,30 +50,25 @@ h1 {
   display: flex;
   align-items: center;
   margin-top: 20px;
+  /* border: 1px solid orange; */
+  column-gap: 50px;
 }
 #shake-area img {
   margin: 0 20px;
-  margin-top: 40px;
+  margin-top: 45px;
 }
 #now-serving {
   padding: 10px 0;
   align-items: center;
 }
 #dmv-number {
-  background-color: darkblue;
+  background-color: rgba(10, 10, 10, 1);
+  color: rgb(250, 50, 50);
   padding: 5px 30px;
   margin-left: 10px;
+  border: inset darkslategrey;
 }
 #results-container p {
-}
-
-.ticket {
-}
-
-#ticket-number-you {
-  position: relative;
-  left: -75px;
-  color: black;
 }
 
 /* CHOICE BUTTON */
@@ -236,6 +231,45 @@ img {
     top: 0px;
   }
 }
+
+/* TICKET STYLES */
+.person-score {
+  /* border: 1px solid blue; */
+  text-align: center;
+}
+.person-score p {
+  /* font-size: rem; */
+  /* text-decoration: underline; */
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+}
+.ticket {
+  /* display: flex;
+  flex-direction: row; */
+  /* border: 1px solid red; */
+  position: relative;
+}
+.ticket-and-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: row; */
+  /* border: 1px solid green; */
+  margin-top: 20px;
+}
+.score-on-right {
+  flex-direction: row;
+}
+.score-on-left {
+  flex-direction: row-reverse;
+}
+#ticket-number-you {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  color: black;
+}
+
 /* SHOWING SCORES */
 #player-score,
 #computer-score {

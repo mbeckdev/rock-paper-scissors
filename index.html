@@ -25,7 +25,7 @@
       </p>
 
       <div id="now-serving" class="hidden">
-        NOW SERVING <span id="dmv-number">27</span>
+        NOW SERVING <span id="dmv-number">14</span>
       </div>
 
       <div id="choice-container" class="hidden">
@@ -54,14 +54,29 @@
           </div>
         </div>
       </div>
-      <span id="score-and-label" class="hidden">
-        <img class="ticket" src="media/ticket.png" />
-        <span id="ticket-number-you">97</span>
-        You <span id="player-score">0</span>
-        <span id="computer-score">0</span> Bruce
-        <img class="ticket" src="media/ticket.png" />
-        <span id="ticket-number-you">42</span>
-      </span>
+      <div id="score-and-label" class="hidden">
+        <div class="person-score">
+          <p>You</p>
+          <div class="ticket-and-score score-on-right">
+            <div class="ticket">
+              <img class="ticket" src="media/ticket.png" />
+              <span id="ticket-number-you">97</span>
+            </div>
+            <div id="player-score">0</div>
+          </div>
+        </div>
+
+        <div class="person-score">
+          <p>Bruce</p>
+          <div class="ticket-and-score score-on-left">
+            <div class="ticket">
+              <img class="ticket" src="media/ticket.png" />
+              <span id="ticket-number-you">17</span>
+            </div>
+            <div id="computer-score">0</div>
+          </div>
+        </div>
+      </div>
 
       <div id="shake-area" class="hidden">
         <img id="player-shaker" src="media/left-rock.png" />

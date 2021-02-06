@@ -5,7 +5,6 @@ function computerPlay() {
 }
 
 function showWinner(stringToShow) {
-  console.log(stringToShow);
   document.getElementById('what-beats-what').textContent = stringToShow;
 }
 
@@ -221,7 +220,7 @@ function afterAnimations() {
   resetChoiceSizes();
 
   //write scores to somewhere visible
-  console.log(`player:${playerScore}  computer:${computerScore}`);
+  // console.log(`player:${playerScore}  computer:${computerScore}`);
 
   //  and set bln to true for next round -- if <5 rounds played, else ending
   blnAcceptingInput = true;
@@ -324,7 +323,6 @@ document
   .addEventListener('transitionend', removeTransition);
 
 function removeTransition(e) {
-  console.log(e);
   // if (e.propertyName !== 'score-glow') return; // skip it if it's not a transform
   this.classList.remove('score-glow');
 }
@@ -457,7 +455,6 @@ function resetChoiceSizes() {
     btn.classList.add('hover-bigger');
     // btn.style.transform = 'scale(1)';
     btn.classList.remove('choice-mouse-up');
-    console.log(btn);
   });
 
   fuzzBalls.forEach((fuzzBall) => {
