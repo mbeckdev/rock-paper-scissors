@@ -76,7 +76,6 @@ function playOneRound(playerSelection, computerSelection) {
 //test
 const playerSelection = 'rock';
 const computerSelection = computerPlay();
-// console.log(playOneRound(playerSelection, computerSelection));
 
 function checkUserInput(playerInput) {
   //returns the result of the prompt
@@ -125,9 +124,6 @@ intro(); // start of everything! after reload.
 function intro() {
   //do intro animations. !
   introTextAnimations();
-  // // when done...
-  // blnAcceptingInput = true;
-  // //show everything else
 }
 const intro1 = document.getElementById('intro1');
 intro1.addEventListener('animationend', afterTextAnimation1);
@@ -139,8 +135,6 @@ const nowServing = document.getElementById('now-serving');
 nowServing.addEventListener('animationend', afterNowServing);
 const makeYourChoice = document.getElementById('make-choice');
 makeYourChoice.addEventListener('animationend', afterMakeYourChoice);
-// const ChoiceContainer = document.getElementById('choice-container');
-// makeYourChoice.addEventListener('animationend', afterMakeYourChoice);
 
 function introTextAnimations() {}
 function afterTextAnimation1() {
@@ -173,11 +167,6 @@ function afterMakeYourChoice() {
   document.getElementById('three-choices').classList.remove('hidden');
   document.getElementById('score-and-label').classList.remove('hidden');
   document.getElementById('shake-area').classList.remove('hidden');
-  // document.getElementById('choice-container').remove('hidden');
-  // document.getElementById('choice-container').remove('hidden');
-  // document.getElementById('choice-container').remove('hidden');
-  // document.getElementById('choice-container').remove('hidden');
-  // document.getElementById('choice-container').remove('hidden');
 
   // when done...
   blnAcceptingInput = true;
@@ -196,14 +185,13 @@ function afterInputRecieved() {
   // sets blnAcceptingInput = true;
   if (blnAcceptingInput == false) {
     // blnAcceptingInput is false because we clicked something
-    console.log(thePlayerInput);
+
     // check playerinput
     thePlayerInput = checkUserInput(thePlayerInput);
 
     // create computer input
 
     theComputerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
-    console.log(theComputerChoice);
 
     shakeAnimations(thePlayerInput, theComputerChoice);
   }
@@ -241,8 +229,6 @@ function afterAnimations() {
 
   // animate player and computer
   // at the end of this animation,
-
-  // nextRound();
 }
 
 const endGameMessageEl = document.getElementById('end-game-message');
@@ -381,16 +367,6 @@ function afterShakeAnimationComputer() {
   afterAnimations();
 }
 
-// function afterShakeAnimation() {
-//   //change to each choice
-//   // console.log('afterShakeAnimation happened!');
-//   changeHandPics();
-
-//   // win-lose animation - like scissors cuts paper or paper covers rock etc.
-
-//   //score and stuff after
-//   afterAnimations();
-// }
 function changeHandPics() {
   document
     .getElementById('player-shaker')
@@ -399,85 +375,6 @@ function changeHandPics() {
     .getElementById('computer-shaker')
     .setAttribute('src', `media/right-${theComputerChoice}.png`);
 }
-
-// function game() {
-//   // old now, can delete i think
-//   //ask for player input
-//   let playerInput = '';
-//   // let playerInput = prompt(
-//   //   'Write "rock", "paper", or "scissors"',
-//   //   "rock"
-//   // );
-//   // //translate input text to lowercase
-//   // playerInput = playerInput.toLowerCase();
-//   // //check input to make sure it's one of 3 words. - else prompt to fix it
-//   // playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
-
-//   // get computer random choice
-//   let computerChoice = '';
-
-//   //play a round - output text saying who won, return a string of who won, 'player' or 'computer'
-
-//   let winner = '';
-//   let playerScore = 0;
-//   let computerScore = 0;
-
-//   for (let i = 0; i < 5; i++) {
-//     // play 5 rounds
-
-//     // get new user input
-//     // let lol = document.getElementById('player-choice-rock');
-//     // console.log(lol);
-
-//     playerInput = thePlayerInput; //acceptChoice();
-//     // playerInput = prompt('Write "rock", "paper", or "scissors"', 'rock');
-//     // translate input text to lowercase
-//     playerInput = playerInput.toLowerCase();
-//     // check input to make sure it's one of 3 words. - else prompt to fix it
-//     playerInput = checkUserInput(playerInput); // Is a string either 'rock', 'paper', or 'scissors'
-//     computerChoice = getComputerChoice(); // Is a string either 'rock', 'paper', or 'scissors'
-
-//     console.log(`Player: ${playerInput}   Computer:${computerChoice}`);
-
-//     winner = playOneRound(playerInput, computerChoice);
-//     // check who won
-//     // if player won, increment player win counter
-//     // else if computer won, increment computer win counter.
-//     if (winner == 'player') {
-//       playerScore++;
-//     } else if (winner == 'computer') {
-//       computerScore++;
-//     }
-//     //write scores to somewhere visible
-//     console.log(`player:${playerScore}  computer:${computerScore}`);
-//   }
-
-//   //check who won all rounds
-//   let gameWinnerMessage = '';
-//   if (playerScore == computerScore) {
-//     gameWinnerMessage = 'You tied the game!';
-//   } else if (playerScore > computerScore) {
-//     gameWinnerMessage = 'You win the game!';
-//   } else {
-//     gameWinnerMessage = 'You lost the game!';
-//   }
-//   //write who won all rounds to screen
-//   console.log(gameWinnerMessage);
-// }
-
-// const choices = querySelectorAll('.choice-button');
-// choices.forEach((choice) => {
-//   choice.addEventListener('keydown', accpetChoice);
-// });
-
-// window.addEventListener('click', acceptChoice);
-// document
-//   .querySelector(`.choice-button`)
-//   .addEventListener('click', acceptChoice);
-
-//
-//
-//
 
 let btns = document.querySelectorAll(`.choice-button`);
 btns.forEach((btn) => {
@@ -488,17 +385,8 @@ btns.forEach((btn) => {
 });
 let btnImgs = document.querySelectorAll(`.choice-image`);
 let fuzzBalls = document.querySelectorAll(`.fuzz-ball`);
-//
-//
-//
 
 function acceptChoice(e) {
-  // let choice = document.querySelector(`.choice-button[data-choice='rock']`);
-  // let choice = document.querySelector(
-  //   `.choice-button[data-choice='${e.target}']`
-  // );
-  // roundReset();
-
   // don't continue if this boolean is false - means someone got to score 5
   if (blnAcceptingInput == true) {
     // reset
@@ -551,10 +439,8 @@ function setMouseUpStyles(e) {
   choice.classList.remove('choice-mouse-down');
   choice.classList.add('choice-mouse-up');
   let background = choice.previousSibling.previousSibling;
-  // console.log(choice);
-  // console.log(background);
+
   background.classList.remove('hidden');
-  // console.log(background);
 
   // choice.classList.add('hover-bigger');
 
@@ -589,18 +475,3 @@ function playSound(e) {
   audio.play();
   // key.classList.add('playing');
 }
-
-// will add a new div behind the picture and box-shadow with a large bloom
-
-//add new div
-//position new div
-//add style of box-shadow  0 0 50px white
-//set z-index -1
-
-//then we can take out the focus border - i think that'll be obvious enough
-
-// game();
-// let testElement = document.querySelector('input');
-
-// let testElement = document.querySelector(`.choice-button[data-choice='paper']`);
-// testElement.style.boxShadow = '1px 1px 20px black';
