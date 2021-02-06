@@ -235,6 +235,8 @@ function checkForEndOfGame() {
   if (playerScore >= 5) {
     endGameMessageEl.textContent =
       'You beat Bruce Bogtrotor! You get his ticket!';
+    document.getElementById('ticket-number-you').textContent = '15';
+    document.getElementById('ticket-number-computer').textContent = '97';
     getReadyForNewGame();
   } else if (computerScore >= 5) {
     endGameMessageEl.textContent =
@@ -289,6 +291,9 @@ function enablePlayAgainButton() {
 function playAgain() {
   document.getElementById('play-again').removeEventListener('click', playAgain);
   document.getElementById('play-again').style.visibility = 'hidden'; //the opposite is visible
+
+  document.getElementById('ticket-number-you').textContent = '97';
+  document.getElementById('ticket-number-computer').textContent = '15';
 
   resetScores();
   resetTexts();
@@ -388,6 +393,7 @@ function acceptChoice(e) {
   // don't continue if this boolean is false - means someone got to score 5
   if (blnAcceptingInput == true) {
     // reset
+    document.getElementById('what-beats-what').textContent = '';
     document.getElementById('player-score').classList.remove('score-glow');
     document.getElementById('computer-score').classList.remove('score-glow');
 

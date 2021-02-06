@@ -30,7 +30,7 @@ body {
 }
 #page {
   width: 1600px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* display: flex;
   justify-content: center; */
   flex-direction: column;
@@ -60,6 +60,8 @@ h1 {
 #now-serving {
   padding: 10px 0;
   align-items: center;
+  border-bottom: 5px solid black;
+  margin-bottom: 30px;
 }
 #dmv-number {
   background-color: rgba(10, 10, 10, 1);
@@ -263,7 +265,8 @@ img {
 .score-on-left {
   flex-direction: row-reverse;
 }
-#ticket-number-you {
+#ticket-number-you,
+#ticket-number-computer {
   position: absolute;
   left: 25px;
   top: 25px;
