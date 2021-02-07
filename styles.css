@@ -363,6 +363,35 @@ img {
   }
 }
 
+/* lEFT PAPER BEATS RIGHT ROCK ... ETC... */
+.player-paper-beats-rock {
+  animation-name: player-paper-beats-rock;
+  animation-duration: 3s;
+}
+@keyframes player-paper-beats-rock {
+  0% {
+    left: 0;
+  }
+  26% {
+    left: -85px;
+  }
+  34% {
+    left: -10px;
+  }
+  59% {
+    left: -85px;
+  }
+  67% {
+    left: -10px;
+  }
+  92% {
+    left: -85px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
 /* play again button */
 #play-again {
   background-color: darkslategray;

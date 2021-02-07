@@ -357,17 +357,42 @@ function shakeAnimations(playerChoice, theComputerChoice) {
 }
 
 playerHand.addEventListener('animationend', afterShakeAnimationPlayer); //dont use () like afterShakeAnimation() because it calls that on page load!
-let lol2 = computerHand.addEventListener(
-  'animationend',
-  afterShakeAnimationComputer
-);
+computerHand.addEventListener('animationend', afterShakeAnimationComputer);
 
+let lastRoundPlayerAnimation = '';
+let lastRoundComputerAnimation = '';
 function afterShakeAnimationPlayer() {
   changeHandPics();
+
+  //take off 'fist-shaking'  from playerHand and computerHand
+  playerHand.classList.remove('fist-shaking');
+  computerHand.classList.remove('fist-shaking');
+
+  //add animation class depending on thePlayerInput playerHand or theComputerChoice computerHand
+
+  //test
+  lastRoundPlayerAnimation = 'player-paper-beats-rock';
+  lastRoundComputerAnimation = 'player-paper-beats-rock';
+  //add the class
+  playerHand.classList.add(`${lastRoundPlayerAnimation}`);
+  computerHand.classList.add(`${lastRoundComputerAnimation}`);
+  afterAnimations();
 }
+
+function removeOldFistAnimations() {
+  if (playerHand.classList.contains(`${lastRoundPlayerAnimation}`)) {
+    playerHand.classList.remove(`${lastRoundPlayerAnimation}`);
+  }
+  if (computerHand.classList.contains(`${lastRoundComputerAnimation}`)) {
+    computerHand.classList.remove(`${lastRoundComputerAnimation}`);
+  }
+
+  // playerHand.classList.remove('fist-shaking');
+  // computerHand.classList.remove('fist-shaking');
+}
+
 function afterShakeAnimationComputer() {
   // changeHandPics();
-  afterAnimations();
 }
 
 function changeHandPics() {
@@ -397,8 +422,8 @@ function acceptChoice(e) {
     document.getElementById('player-score').classList.remove('score-glow');
     document.getElementById('computer-score').classList.remove('score-glow');
 
-    playerHand.classList.remove('fist-shaking');
-    computerHand.classList.remove('fist-shaking');
+    //remove old animations from fist shaking
+    removeOldFistAnimations();
 
     // playerHand.removeEventListener('transitionend', afterShakeAnimation());
     // computerHand.removeEventListener('transitionend', afterShakeAnimation());
