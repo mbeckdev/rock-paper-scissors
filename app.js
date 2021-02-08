@@ -357,18 +357,20 @@ function shakeAnimations(playerChoice, theComputerChoice) {
 }
 
 playerHand.addEventListener('animationend', afterShakeAnimationPlayer); //dont use () like afterShakeAnimation() because it calls that on page load!
-computerHand.addEventListener('animationend', afterShakeAnimationComputer);
+// computerHand.addEventListener('animationend', afterShakeAnimationComputer);
 
 let lastRoundPlayerAnimation = '';
 let lastRoundComputerAnimation = '';
+let animationCounter = 0;
 function afterShakeAnimationPlayer() {
-  changeHandPics();
+  // after fist shaking happens - should play next animation here
 
+  changeHandPics();
   //take off 'fist-shaking'  from playerHand and computerHand
   playerHand.classList.remove('fist-shaking');
   computerHand.classList.remove('fist-shaking');
 
-  //add animation class depending on thePlayerInput playerHand or theComputerChoice computerHand
+  animationCounter == 1;
 
   //test
   lastRoundPlayerAnimation = 'player-paper-beats-rock';
@@ -376,7 +378,15 @@ function afterShakeAnimationPlayer() {
   //add the class
   playerHand.classList.add(`${lastRoundPlayerAnimation}`);
   computerHand.classList.add(`${lastRoundComputerAnimation}`);
-  afterAnimations();
+
+  if (animationCounter == 0) {
+    animationCounter = 1;
+  } else if (animationCounter == 1) {
+    afterAnimations();
+    animationCounter = 0;
+  }
+
+  //add animation class depending on thePlayerInput playerHand or theComputerChoice computerHand
 }
 
 function removeOldFistAnimations() {
