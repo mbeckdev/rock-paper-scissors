@@ -195,10 +195,15 @@ function afterInputRecieved() {
     shakeAnimations(thePlayerInput, theComputerChoice);
   }
 }
+let roundWinner = '';
+
+function checkWhoWins() {
+  roundWinner = playOneRound(thePlayerInput, theComputerChoice);
+}
 function afterAnimations() {
   // check who wins
   let winner = '';
-  winner = playOneRound(thePlayerInput, theComputerChoice);
+  winner = roundWinner;
 
   // check who won
   // if player won, increment player win counter
@@ -365,6 +370,12 @@ playerHand.addEventListener('animationend', afterShakeAnimationPlayer); //dont u
 let lastRoundPlayerAnimation = '';
 let lastRoundComputerAnimation = '';
 let animationCounter = 0;
+
+// initial fist-shake speed
+playerHand.style.animationDuration = '1.25s';
+computerHand.style.animationDuration = '1.25s';
+// playerHand.style.animationFillMode = 'forwards';
+// computerHand.style.animationFillMode = 'forwards';
 function afterShakeAnimationPlayer() {
   // after fist shaking happens - should play next animation here
 
@@ -373,23 +384,109 @@ function afterShakeAnimationPlayer() {
   playerHand.classList.remove('fist-shaking');
   computerHand.classList.remove('fist-shaking');
 
-  animationCounter == 1;
+  //set lastRoundAnimations
+  //hereherehere turn back ooooon
 
   //test
-  lastRoundPlayerAnimation = 'player-paper-beats-rock';
-  lastRoundComputerAnimation = 'player-paper-beats-rock';
+  // lastRoundPlayerAnimation = 'player-tie';
+  // lastRoundComputerAnimation = 'computer-tie';
+
   //add the class
-  playerHand.classList.add(`${lastRoundPlayerAnimation}`);
-  computerHand.classList.add(`${lastRoundComputerAnimation}`);
+  // playerHand.classList.add(`computer-rock-loses-to-paper`);
+  // computerHand.classList.add(`computer-rock-loses-to-paper`);
 
   if (animationCounter == 0) {
     animationCounter = 1;
+    checkWhoWins();
+    findWinnerForAnimation(thePlayerInput, theComputerChoice);
+    playerHand.classList.add(`${lastRoundPlayerAnimation}`);
+    computerHand.classList.add(`${lastRoundComputerAnimation}`);
+    // set animation-duration for next animation here
+    //   instead of in css because css doesn't allow
+    //   changing it by new classes
+    // duration of next animation - paper beats rock etc...
+    playerHand.style.animationDuration = '0.75s';
+    computerHand.style.animationDuration = '0.75s';
   } else if (animationCounter == 1) {
-    afterAnimations();
     animationCounter = 0;
+    // speed of next fist-shake
+    playerHand.style.animationDuration = '1.25s';
+    computerHand.style.animationDuration = '1.25s';
+    afterAnimations();
   }
+  // afterAnimations();
 
   //add animation class depending on thePlayerInput playerHand or theComputerChoice computerHand
+}
+
+function findWinnerForAnimation(playerSelection, computerSelection) {
+  if (playerSelection == 'rock') {
+    switch (computerSelection) {
+      case 'rock':
+        // stringToShow = 'You tied! Rock vs Rock';
+        lastRoundPlayerAnimation = 'player-tie';
+        lastRoundComputerAnimation = 'computer-tie';
+        return 'tie';
+      case 'paper':
+        // stringToShow = 'You lose! Paper beats Rock';
+        lastRoundPlayerAnimation = 'player-rock-loses-to-paper';
+        lastRoundComputerAnimation = 'computer-paper-beats-rock';
+
+        return 'computer';
+      case 'scissors':
+        // stringToShow = 'You win! Rock beats Scissors';
+        lastRoundPlayerAnimation = 'player-rock-beats-scissors';
+        lastRoundComputerAnimation = 'computer-scissors-loses-to-rock';
+        return 'player';
+      default:
+        //the computer selection isn't one of the three words - error
+        console.log('Computer selection is not one of the three words!');
+    }
+  } else if (playerSelection == 'paper') {
+    switch (computerSelection) {
+      case 'paper':
+        // stringToShow = 'You tied! Paper vs Paper';
+        lastRoundPlayerAnimation = 'player-tie';
+        lastRoundComputerAnimation = 'computer-tie';
+        return 'tie';
+      case 'scissors':
+        // stringToShow = 'You lose! Scissors beats Paper';
+        lastRoundPlayerAnimation = 'player-paper-loses-to-scissors';
+        lastRoundComputerAnimation = 'computer-scissors-beats-paper';
+        return 'computer';
+      case 'rock':
+        // stringToShow = 'You win! Paper beats Rock';
+        lastRoundPlayerAnimation = 'player-paper-beats-rock';
+        lastRoundComputerAnimation = 'computer-rock-loses-to-paper';
+        return 'player';
+      default:
+        //the computer selection isn't one of the three words - error
+        console.log('Computer selection is not one of the three words!');
+    }
+  } else if (playerSelection == 'scissors') {
+    switch (computerSelection) {
+      case 'scissors':
+        // stringToShow = 'You tied! Scissors vs Scissors';
+        lastRoundPlayerAnimation = 'player-tie';
+        lastRoundComputerAnimation = 'computer-tie';
+        return 'tie';
+      case 'rock':
+        // stringToShow = 'You lose! Rock beats Scissors';
+        lastRoundPlayerAnimation = 'player-scissors-loses-to-rock';
+        lastRoundComputerAnimation = 'computer-rock-beats-scissors';
+        return 'computer';
+      case 'paper':
+        // stringToShow = 'You win! Scissors beats Paper';
+        lastRoundPlayerAnimation = 'player-scissors-beats-paper';
+        lastRoundComputerAnimation = 'computer-paper-loses-to-scissors';
+        return 'player';
+      default:
+        //the computer selection isn't one of the three words - error
+        console.log('Computer selection is not one of the three words!');
+    }
+  } else {
+    return "You didn't enter something correctly";
+  }
 }
 
 function removeOldFistAnimations() {
@@ -477,9 +574,14 @@ function setMouseUpStyles(e) {
   let choice = e.target.parentElement;
   choice.classList.remove('choice-mouse-down');
   choice.classList.add('choice-mouse-up');
-  let background = choice.previousSibling.previousSibling;
 
-  background.classList.remove('hidden');
+  // let background = choice.previousSibling.previousSibling;
+  // if (background.classList.contains('hidden')) {
+  //   background.classList.remove('hidden');
+  // }
+
+  let fuzzBall = choice.firstElementChild; //div thing
+  fuzzBall.classList.remove('hidden');
 
   // choice.classList.add('hover-bigger');
 

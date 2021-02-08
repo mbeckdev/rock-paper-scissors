@@ -323,6 +323,8 @@ img {
   position: relative;
   animation-duration: 1.25s;
   animation-iteration-count: 1;
+  /* animation-direction: normal;
+  animation-fill-mode: forwards; */
 }
 
 .fist-shaking {
@@ -366,29 +368,433 @@ img {
 /* lEFT PAPER BEATS RIGHT ROCK ... ETC... */
 .player-paper-beats-rock {
   animation-name: player-paper-beats-rock;
-  animation-duration: 3s;
+  /* animation-duration: 3s; */
+
+  position: relative;
+  animation-iteration-count: 1;
 }
 @keyframes player-paper-beats-rock {
   0% {
     left: 0;
   }
   26% {
-    left: -85px;
+    left: 0px;
   }
   34% {
-    left: -10px;
+    left: 10px;
+    top: -50px;
   }
   59% {
-    left: -85px;
+    left: 100px;
+    top: -90px;
   }
   67% {
-    left: -10px;
+    left: 100px;
+    top: -90px;
   }
   92% {
-    left: -85px;
+    left: 100px;
+    top: -90px;
   }
   100% {
     left: 0;
+    top: 0;
+  }
+}
+.computer-rock-loses-to-paper {
+  animation-name: computer-rock-loses-to-paper;
+  /* animation-duration: 0.1s; */
+  position: relative;
+  animation-iteration-count: 1;
+}
+@keyframes computer-rock-loses-to-paper {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 0px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+/* //opposite */
+.computer-paper-beats-rock {
+  animation-name: computer-paper-beats-rock;
+}
+@keyframes computer-paper-beats-rock {
+  0% {
+    left: 0;
+  }
+  26% {
+    left: 0px;
+  }
+  34% {
+    left: -10px;
+    top: -50px;
+  }
+  59% {
+    left: -100px;
+    top: -90px;
+  }
+  67% {
+    left: -100px;
+    top: -90px;
+  }
+  92% {
+    left: -100px;
+    top: -90px;
+  }
+  100% {
+    left: -100px;
+    top: -90px;
+  }
+}
+.player-rock-loses-to-paper {
+  animation-name: player-rock-loses-to-paper;
+  /* animation-duration: 3s; */
+}
+@keyframes player-rock-loses-to-paper {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+/* SCISSORS AND PAPER */
+.player-scissors-beats-paper {
+  animation-name: player-scissors-beats-paper;
+  /* animation-duration: 3s; */
+}
+@keyframes player-scissors-beats-paper {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  26% {
+    left: 0px;
+    top: 0;
+  }
+  34% {
+    left: 85px;
+    top: 0;
+  }
+  59% {
+    left: 85px;
+    top: -80px;
+  }
+  67% {
+    left: 85px;
+    top: 0;
+  }
+  92% {
+    left: 85px;
+    top: -80px;
+  }
+  100% {
+    left: 85px;
+    top: 0;
+  }
+}
+.computer-paper-loses-to-scissors {
+  animation-name: computer-paper-loses-to-scissors;
+  /* animation-duration: 3s; */
+}
+@keyframes computer-paper-loses-to-scissors {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  26% {
+    left: 0px;
+    top: 0;
+  }
+  34% {
+    left: 5px;
+    top: 0;
+  }
+  59% {
+    left: 5px;
+    top: -80px;
+  }
+  67% {
+    left: 5px;
+    top: 0;
+  }
+  92% {
+    left: 5px;
+    top: -80px;
+  }
+  100% {
+    left: 5px;
+    top: 0;
+  }
+}
+
+/* opposite */
+.computer-scissors-beats-paper {
+  animation-name: computer-scissors-beats-paper;
+  /* animation-duration: 3s; */
+}
+@keyframes computer-scissors-beats-paper {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  26% {
+    left: 0px;
+    top: 0;
+  }
+  34% {
+    left: -85px;
+    top: 0;
+  }
+  59% {
+    left: -85px;
+    top: -80px;
+  }
+  67% {
+    left: -85px;
+    top: 0;
+  }
+  92% {
+    left: -85px;
+    top: -80px;
+  }
+  100% {
+    left: -85px;
+    top: 0;
+  }
+}
+.player-paper-loses-to-scissors {
+  animation-name: player-paper-loses-to-scissors;
+  /* animation-duration: 3s; */
+}
+@keyframes player-paper-loses-to-scissors {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  26% {
+    left: 0px;
+    top: 0;
+  }
+  34% {
+    left: -5px;
+    top: 0;
+  }
+  59% {
+    left: -5px;
+    top: -80px;
+  }
+  67% {
+    left: -5px;
+    top: 0;
+  }
+  92% {
+    left: -5px;
+    top: -80px;
+  }
+  100% {
+    left: -5px;
+    top: 0;
+  }
+}
+
+/* ROCK AND SCISSORS */
+.player-rock-beats-scissors {
+  animation-name: player-rock-beats-scissors;
+  /* animation-duration: 3s; */
+
+  position: relative;
+  animation-iteration-count: 1;
+  z-index: 1;
+}
+@keyframes player-rock-beats-scissors {
+  0% {
+    left: 0;
+    top: 0;
+  }
+
+  34% {
+    left: 130px;
+    top: -150px;
+  }
+  59% {
+    left: 130px;
+    top: -70px;
+  }
+  67% {
+    left: 130px;
+    top: -70px;
+  }
+  92% {
+    left: 130px;
+    top: -70px;
+  }
+  100% {
+    left: 130px;
+    top: -70px;
+  }
+}
+.computer-scissors-loses-to-rock {
+  animation-name: computer-scissors-loses-to-rock;
+  /* animation-duration: 0.1s; */
+  position: relative;
+  animation-iteration-count: 1;
+  z-index: 0;
+}
+@keyframes computer-scissors-loses-to-rock {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  34% {
+    left: 0px;
+    top: 0px;
+  }
+  42% {
+    left: 0px;
+    top: 0px;
+  }
+  59% {
+    left: 0px;
+    top: 20px;
+  }
+  100% {
+    left: 0;
+    top: 20px;
+  }
+}
+/* opposite */
+.computer-rock-beats-scissors {
+  animation-name: computer-rock-beats-scissors;
+  /* animation-duration: 3s; */
+
+  position: relative;
+  animation-iteration-count: 1;
+  z-index: 1;
+}
+@keyframes computer-rock-beats-scissors {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  /* 26% {
+    left: 40px;
+    top: -70px;
+  } */
+  34% {
+    left: -130px;
+    top: -150px;
+  }
+  59% {
+    left: -130px;
+    top: -70px;
+  }
+  67% {
+    left: -130px;
+    top: -70px;
+  }
+  92% {
+    left: -130px;
+    top: -70px;
+  }
+  100% {
+    left: -130px;
+    top: -70px;
+  }
+}
+.player-scissors-loses-to-rock {
+  animation-name: player-scissors-loses-to-rock;
+  /* animation-duration: 0.1s; */
+  position: relative;
+  animation-iteration-count: 1;
+  z-index: 0;
+}
+@keyframes player-scissors-loses-to-rock {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  34% {
+    left: 0px;
+    top: 0px;
+  }
+  42% {
+    left: 0px;
+    top: 0px;
+  }
+  59% {
+    left: 0px;
+    top: 20px;
+  }
+  100% {
+    left: 0;
+    top: 20px;
+  }
+}
+
+/* ties */
+.player-tie {
+  animation-name: player-tie;
+  /* animation-duration: 0.1s; */
+  position: relative;
+  animation-iteration-count: 1;
+  z-index: 0;
+}
+@keyframes player-tie {
+  0% {
+    left: 0;
+    top: 0;
+    transform: rotate(0deg);
+  }
+  59% {
+    left: 0px;
+    top: 0px;
+    transform: rotate(-5deg);
+  }
+  92% {
+    left: 0;
+    top: 0px;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: 0;
+    top: 0px;
+    transform: rotate(0deg);
+  }
+}
+.computer-tie {
+  animation-name: computer-tie;
+  /* animation-duration: 0.1s; */
+  position: relative;
+  animation-iteration-count: 1;
+  z-index: 0;
+}
+@keyframes computer-tie {
+  0% {
+    left: 0;
+    top: 0;
+    transform: rotate(0deg);
+  }
+  59% {
+    left: 0px;
+    top: 0px;
+    transform: rotate(5deg);
+  }
+  92% {
+    left: 0;
+    top: 0px;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: 0;
+    top: 0px;
+    transform: rotate(0deg);
   }
 }
 
