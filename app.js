@@ -397,10 +397,18 @@ function afterShakeAnimationPlayer() {
 
   if (animationCounter == 0) {
     animationCounter = 1;
+    // uncomment these hereherehere
     checkWhoWins();
     findWinnerForAnimation(thePlayerInput, theComputerChoice);
+
+    // add the class - testing hereherehere
+    // lastRoundPlayerAnimation = 'player-rock-loses-to-paper';
+    // lastRoundComputerAnimation = 'computer-paper-beats-rock';
+
+    //uncomment these hereherehere
     playerHand.classList.add(`${lastRoundPlayerAnimation}`);
     computerHand.classList.add(`${lastRoundComputerAnimation}`);
+
     // set animation-duration for next animation here
     //   instead of in css because css doesn't allow
     //   changing it by new classes

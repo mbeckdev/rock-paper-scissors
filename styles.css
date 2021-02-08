@@ -372,33 +372,33 @@ img {
 
   position: relative;
   animation-iteration-count: 1;
+  z-index: 1;
 }
 @keyframes player-paper-beats-rock {
   0% {
     left: 0;
+    top: 0;
   }
-  26% {
-    left: 0px;
-  }
+
   34% {
-    left: 10px;
-    top: -50px;
+    left: 190px;
+    top: -100px;
   }
   59% {
-    left: 100px;
-    top: -90px;
+    left: 190px;
+    top: -10px;
   }
   67% {
-    left: 100px;
-    top: -90px;
+    left: 190px;
+    top: -10px;
   }
   92% {
-    left: 100px;
-    top: -90px;
+    left: 190px;
+    top: -10px;
   }
   100% {
-    left: 0;
-    top: 0;
+    left: 190px;
+    top: -10px;
   }
 }
 .computer-rock-loses-to-paper {
@@ -406,61 +406,89 @@ img {
   /* animation-duration: 0.1s; */
   position: relative;
   animation-iteration-count: 1;
+  z-index: 0;
 }
 @keyframes computer-rock-loses-to-paper {
   0% {
     left: 0;
+    top: 0;
   }
-  50% {
+  34% {
     left: 0px;
+    top: 0px;
+  }
+  42% {
+    left: 0px;
+    top: 0px;
+  }
+  59% {
+    left: 0px;
+    top: 20px;
   }
   100% {
     left: 0;
+    top: 20px;
   }
 }
 
 /* //opposite */
 .computer-paper-beats-rock {
   animation-name: computer-paper-beats-rock;
+  animation-iteration-count: 1;
+  z-index: 1;
 }
 @keyframes computer-paper-beats-rock {
   0% {
     left: 0;
+    top: 0;
   }
-  26% {
-    left: 0px;
-  }
+
   34% {
-    left: -10px;
-    top: -50px;
+    left: -190px;
+    top: -100px;
   }
   59% {
-    left: -100px;
-    top: -90px;
+    left: -190px;
+    top: -10px;
   }
   67% {
-    left: -100px;
-    top: -90px;
+    left: -190px;
+    top: -10px;
   }
   92% {
-    left: -100px;
-    top: -90px;
+    left: -190px;
+    top: -10px;
   }
   100% {
-    left: -100px;
-    top: -90px;
+    left: -190px;
+    top: -10px;
   }
 }
 .player-rock-loses-to-paper {
   animation-name: player-rock-loses-to-paper;
-  /* animation-duration: 3s; */
+  animation-iteration-count: 1;
+  z-index: 0;
 }
 @keyframes player-rock-loses-to-paper {
   0% {
     left: 0;
+    top: 0;
+  }
+  34% {
+    left: 0px;
+    top: 0px;
+  }
+  42% {
+    left: 0px;
+    top: 0px;
+  }
+  59% {
+    left: 0px;
+    top: 20px;
   }
   100% {
     left: 0;
+    top: 20px;
   }
 }
 
