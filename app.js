@@ -118,7 +118,6 @@ function getComputerChoice() {
     }
   } else {
     // Cheat mode is on
-    console.log(thePlayerInput);
     switch (thePlayerInput) {
       case 'rock':
         return 'scissors';
@@ -650,7 +649,6 @@ let blnCheatModeOn = false;
 
 function toggleCheat(e) {
   // turns always winning on or off when you press 'm'
-  console.log(e.keyCode);
   if (e.keyCode == 77) {
     // document.getElementById('page').style.color = 'blue';
     if (cheatIndicatorEl.classList.contains('hidden')) {
