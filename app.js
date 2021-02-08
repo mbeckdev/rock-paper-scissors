@@ -3,7 +3,7 @@
 function computerPlay() {
   //return randomly  'Rock', 'Paper', or 'Scissors'.
 }
-
+//
 function showWinner(stringToShow) {
   document.getElementById('what-beats-what').textContent = stringToShow;
 }
