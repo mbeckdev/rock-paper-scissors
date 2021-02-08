@@ -103,19 +103,34 @@ function checkUserInput(playerInput) {
 function getComputerChoice() {
   let compChoice = '';
   let rndInt = 0; //will hold 0,1,or2 later
-  rndInt = Math.floor(Math.random() * 3); //gives 0,1,or2
-  switch (rndInt) {
-    case 0:
-      return 'rock';
-    case 1:
-      return 'paper';
-    case 2:
-      return 'scissors';
-    default:
-      return 'computer choice is a bad integer';
+
+  if (blnCheatModeOn == false) {
+    rndInt = Math.floor(Math.random() * 3); //gives 0,1,or2
+    switch (rndInt) {
+      case 0:
+        return 'rock';
+      case 1:
+        return 'paper';
+      case 2:
+        return 'scissors';
+      default:
+        return 'computer choice is a bad integer';
+    }
+  } else {
+    // Cheat mode is on
+    console.log(thePlayerInput);
+    switch (thePlayerInput) {
+      case 'rock':
+        return 'scissors';
+      case 'paper':
+        return 'rock';
+      case 'scissors':
+        return 'paper';
+      default:
+        return 'computer choice is a bad cheat string';
+    }
   }
 }
-
 let thePlayerInput = '';
 let blnAcceptingInput = 'false';
 
@@ -622,4 +637,25 @@ function playSound(e) {
   audio.currentTime = 0; // rewind to the start - so you can press it a bunch of times fast
   audio.play();
   // key.classList.add('playing');
+}
+
+// Cheater section
+document.addEventListener('keydown', toggleCheat);
+
+const cheatIndicatorEl = document.getElementById('cheat-indicator');
+let blnCheatModeOn = false;
+
+function toggleCheat(e) {
+  // turns always winning on or off when you press 'm'
+  console.log(e.keyCode);
+  if (e.keyCode == 77) {
+    // document.getElementById('page').style.color = 'blue';
+    if (cheatIndicatorEl.classList.contains('hidden')) {
+      blnCheatModeOn = true;
+      cheatIndicatorEl.classList.remove('hidden');
+    } else {
+      blnCheatModeOn = false;
+      cheatIndicatorEl.classList.add('hidden');
+    }
+  }
 }
