@@ -219,6 +219,9 @@ function afterAnimations() {
   //take off selection glow
   resetChoiceSizes();
 
+  //remove old animations from fist shaking
+  removeOldFistAnimations();
+
   //write scores to somewhere visible
   // console.log(`player:${playerScore}  computer:${computerScore}`);
 
@@ -431,9 +434,6 @@ function acceptChoice(e) {
     document.getElementById('what-beats-what').textContent = '';
     document.getElementById('player-score').classList.remove('score-glow');
     document.getElementById('computer-score').classList.remove('score-glow');
-
-    //remove old animations from fist shaking
-    removeOldFistAnimations();
 
     // playerHand.removeEventListener('transitionend', afterShakeAnimation());
     // computerHand.removeEventListener('transitionend', afterShakeAnimation());
