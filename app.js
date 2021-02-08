@@ -630,6 +630,9 @@ function resetChoiceSizes() {
   });
 }
 
+const theSound = document.getElementById('select');
+theSound.volume = 0.1;
+
 function playSound(e) {
   const audio = document.querySelector(`audio#select`);
   // const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
