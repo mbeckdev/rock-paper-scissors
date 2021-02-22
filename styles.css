@@ -282,9 +282,9 @@ img {
   position: absolute;
   left: 30px;
   top: 30px;
-  color: rgb(30, 0, 30);
+  color: rgb(20, 0, 20);
 
-  text-shadow: 1px 1px 2px rgb(100, 0, 100);
+  /* text-shadow: 1px 1px 2px rgb(100, 0, 100); */
   /* text-shadow: -1px -1px 1px black; */
 }
 
@@ -869,7 +869,6 @@ img {
 
 #cheat-indicator {
   position: absolute;
-  /* transform-origin: bottom left; */
   top: 0;
   left: 0;
   width: 2px;
@@ -880,6 +879,77 @@ img {
 @media only screen and (max-width: 800px) {
   #end-game-message {
     font-size: 1.4rem;
+  }
+  #page {
+    width: 100vw;
+  }
+  #choice-container {
+    width: 100vw;
+    margin-bottom: -45px;
+  }
+  #three-choices img {
+  }
+  #three-choices {
+    width: 100vw;
+  }
+  .choice-button {
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  #three-choices {
+    position: relative;
+    display: flex;
+    justify-content: none;
+    transform: scale(0.5);
+    margin-top: -40px;
+  }
+
+  #page {
+    min-width: 350px;
+    transform-origin: initial;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  .intro-text {
+    font-size: 0.8rem;
+
+    width: 100vw;
+    min-width: 350px;
+    height: 2rem;
+    margin-top: 5px;
+  }
+  #make-choice,
+  #now-serving {
+    font-size: 1.2rem;
+  }
+  #make-choice {
+    margin-bottom: -50px;
+    font-size: 2rem;
+  }
+  #what-beats-what,
+  #end-game-message {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  #shake-area {
+    transform: scale(0.5);
+    margin-top: -30px;
+    margin-bottom: -20px;
+  }
+  .ticket-and-score {
+    width: 120px;
+  }
+
+  #player-score {
+    margin-left: -10px;
+    margin-right: 20px;
+  }
+  #computer-score {
+    margin-left: 20px;
+    margin-right: -10px;
   }
 }
 
