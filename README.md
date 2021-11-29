@@ -10,7 +10,7 @@ HTML, CSS, JAVASCRIPT
 
 - I used some pictures that I drew of a hilarious rock, paper, and scissors.
 - Check out the CSS animations! These can get complicated real quick. I was having fun trying to get it to shake the fist properly, and then if it won, put the fist on top of the other one. I learned you can do a lot with animations.
-- Keyframes are your friend when doing CSS animations
+- Keyframes are your friend when doing CSS animations.
 
 ## Other Notes
 
